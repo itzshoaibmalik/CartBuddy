@@ -1,0 +1,25 @@
+/* Modern UI Styles */
+:root {
+  --primary: #6C63FF;
+  --secondary: #2A2A2A;
+  --accent: #FF6B6B;
+  --background: #F8F9FC;
+  --text: #2A2A2A;
+  --card-bg: #FFFFFF;
+  --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
+  /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
