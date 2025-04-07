@@ -252,3 +252,98 @@ nav ul li a:hover::after {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
 }
+
+/* Testimonials */
+.testimonials {
+  background: var(--card-bg);
+  padding: 4rem 2rem;
+  margin: 4rem 0;
+}
+
+.testimonial-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--background);
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+}
+
+.testimonial-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primary);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Cart Styles */
+.cart-container {
+max-width: 1000px;
+margin: 120px auto 4rem;
+padding: 2rem;
+background: var(--card-bg);
+border-radius: 16px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item {
+display: grid;
+grid-template-columns: auto 1fr auto;
+gap: 2rem;
+padding: 1.5rem;
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+align-items: center;
+}
+
+.cart-item img {
+width: 100px;
+height: 100px;
+object-fit: cover;
+border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+nav {
+padding: 1rem;
+}
+
+nav ul {
+display: none;
+}
+
+.hero h1 {
+font-size: 2.5rem;
+}
+
+.product-grid {
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+
+.cart-item {
+grid-template-columns: 1fr;
+text-align: center;
+}
+
+.cart-item img {
+margin: 0 auto;
+}
+}
