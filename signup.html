@@ -158,9 +158,55 @@
       <!-- Link for creating account -->
     </div>
   </div>
-<!-- 
 
-    </script> --> -->
+  <!-- <script>
+         document.getElementById('signInForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent form from submitting the default way
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+
+    // Regular expressions for validation
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Email format
+    const phonePattern = /^[0-9]{10}$/; // Phone number (10 digits)
+
+    // Validate Name (non-empty)
+    if (name.trim() === "") {
+        alert('Please enter your name.');
+        return;
+    }
+
+    // Validate Email (non-empty and correct format)
+    if (email.trim() === "") {
+        alert('Please enter your email.');
+        return;
+    } else if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Validate Phone Number (non-empty and 10 digits)
+    if (phone.trim() === "") {
+        alert('Please enter your phone number.');
+        return;
+    } else if (!phonePattern.test(phone)) {
+        alert('Please enter a valid phone number (10 digits).');
+        return;
+    }
+
+    // If all validations pass, proceed
+    alert('Form submitted successfully!');
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Phone:', phone);
+
+    // Reset the form after successful submission
+
+});
+
+
+    </script> -->
   <script>
     document.getElementById('signInForm').addEventListener('submit', function (e) {
       e.preventDefault(); // Prevent form from submitting the default way
