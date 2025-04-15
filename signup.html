@@ -1,165 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In Page</title>
-  <style>
-    /* Basic reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Full-screen background video */
-    body,
-    html {
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        /* Full-screen background video */
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .background-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      /* Keep the video behind the form */
-      object-fit: cover;
-      background-position: center;
-    }
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Keep the video behind the form */
+            object-fit: cover;
+            background-position: center;
+        }
 
-    /* Sign-in container */
-    .sign-in-container {
-      position: fixed;
-      top: 50%;
-      left: 55%;
-      /* Shifted slightly to the right */
-      transform: translateY(-50%);
-      /* Keep it centered vertically */
-      background-color: rgba(201, 163, 230, 0.8);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-      /* Shadow for depth */
-      width: 380px;
-      /* Form width */
-      z-index: 10;
-      /* Higher than video */
-    }
+        /* Sign-in container */
+        .sign-in-container {
+            position: fixed;
+            top: 50%;
+            left: 55%; /* Shifted slightly to the right */
+            transform: translateY(-50%); /* Keep it centered vertically */
+             background-color: rgba(201, 163, 230, 0.8); 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+            width: 380px; /* Form width */
+            z-index: 10; /* Higher than video */
+        }
 
-    /* Form styling */
-    .sign-in-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+        /* Form styling */
+        .sign-in-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .sign-in-form input {
-      padding: 15px;
-      border-radius: 8px;
-      border: 1px solid #d5a0ff;
-      /* Light purple border */
-      font-size: 16px;
-      background-color: #fff;
-    }
+        .sign-in-form input {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #d5a0ff; /* Light purple border */
+            font-size: 16px;
+            background-color: #fff;
+        }
 
-    /* Button styling */
-    .sign-in-form button {
-      padding: 15px;
-      border: none;
-      background-color: #53486b;
-      /* Solid light purple background */
-      color: rgb(246, 243, 247);
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-      /* Smooth transition */
-    }
+        /* Button styling */
+        .sign-in-form button {
+            padding: 15px;
+            border: none;
+            background-color: #53486b; /* Solid light purple background */
+            color: rgb(246, 243, 247);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
 
-    /* Hover effect */
-    .sign-in-form button:hover {
-      background-color: #2d074a;
-      /* Darker purple on hover */
-    }
+        /* Hover effect */
+        .sign-in-form button:hover {
+            background-color: #2d074a; /* Darker purple on hover */
+        }
 
-    /* Button click effect */
-    .sign-in-form button:active {
-      transform: scale(0.98);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      /* Button click effect */
-    }
+        /* Button click effect */
+        .sign-in-form button:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Button click effect */
+        }
 
-    .sign-in-form h2 {
-      color: white;
-      font-size: 24px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .sign-in-form h2 {
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    /* New greeting and create account section */
-    .create-account {
-      text-align: center;
-      font-size: 14px;
-      color: white;
-      margin-top: 20px;
-    }
+        /* New greeting and create account section */
+        .create-account {
+            text-align: center;
+            font-size: 14px;
+            color: white;
+            margin-top: 20px;
+        }
 
-    .create-account a {
-      color: #c09eff;
-      text-decoration: none;
-      font-weight: bold;
-    }
+        .create-account a {
+            color: #c09eff;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .create-account a:hover {
-      color: #5b0957;
-      /* Hover effect for the link */
-    }
+        .create-account a:hover {
+            color: #5b0957; /* Hover effect for the link */
+        }
+        .head{
+            color: #2d074a;
+        }
 
-    .head {
-      color: #2d074a;
-    }
-  </style>
+    </style>
 </head>
-
 <body>
+    
 
+    <!-- Background video -->
+    <video autoplay muted loop class="background-video">
+        <source src="login.mp4" type="video/mp4">
+        <!-- Add other video formats if needed for compatibility -->
+    </video>
 
-  <!-- Background video -->
-  <video autoplay muted loop class="background-video">
-    <source src="login.mp4" type="video/mp4">
-    <!-- Add other video formats if needed for compatibility -->
-  </video>
+    <!-- Sign-in form -->
+    <div class="sign-in-container">
+        <form class="sign-in-form" id="signInForm">
+            <h2 style="color: #2d074a;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Spendzzy Awaits! login </h2> 
+            <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required>
+            <button type="submit" id="loginButton">Login</button>
+        </form>
 
-  <!-- Sign-in form -->
-  <div class="sign-in-container">
-    <form class="sign-in-form" id="signInForm">
-      <h2
-        style="color: #2d074a;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-        Spendzzy Awaits! login </h2>
-      <input type="text" id="name" name="name" placeholder="Enter your Name" required>
-      <input type="email" id="email" name="email" placeholder="Enter your Email" required>
-      <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number" required>
-      <button type="submit" id="loginButton">Login</button>
-    </form>
-
-    <!-- Create Account Section -->
-    <div class="create-account">
-      <p style="color: #f4f3f5;">Don't have an account? <a href="#">Create one here</a></p>
-      <!-- Link for creating account -->
+        <!-- Create Account Section -->
+        <div class="create-account">
+            <p style="color: #f4f3f5;">Don't have an account? <a href="#">Create one here</a></p> <!-- Link for creating account -->
+        </div>
     </div>
-  </div>
 
-  <!-- <script>
+    <!-- <script>
          document.getElementById('signInForm').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent form from submitting the default way
 
@@ -207,53 +189,52 @@
 
 
     </script> -->
-  <script>
-    document.getElementById('signInForm').addEventListener('submit', function (e) {
-      e.preventDefault(); // Prevent form from submitting the default way
-
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-
-      // Regular expressions for validation
-      const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Email format
-      const phonePattern = /^[0-9]{10}$/; // Phone number (10 digits)
-
-      // Validate Name (non-empty)
-      if (name.trim() === "") {
-        alert('Please enter your name.');
-        return;
-      }
-
-      // Validate Email (non-empty and correct format)
-      if (email.trim() === "") {
-        alert('Please enter your email.');
-        return;
-      } else if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-      }
-
-      // Validate Phone Number (non-empty and 10 digits)
-      if (phone.trim() === "") {
-        alert('Please enter your phone number.');
-        return;
-      } else if (!phonePattern.test(phone)) {
-        alert('Please enter a valid phone number (10 digits).');
-        return;
-      }
-
-      // If all validations pass, show success message and redirect
-      alert('Login successful!');
-      console.log('Name:', name);
-      console.log('Email:', email);
-      console.log('Phone:', phone);
-
-      // Redirect to index.html after successful login
-      window.location.href = 'index.html';  // This line redirects to the index page
-    });
-  </script>
-
+    <script>
+        document.getElementById('signInForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting the default way
+    
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+    
+            // Regular expressions for validation
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // Email format
+            const phonePattern = /^[0-9]{10}$/; // Phone number (10 digits)
+    
+            // Validate Name (non-empty)
+            if (name.trim() === "") {
+                alert('Please enter your name.');
+                return;
+            }
+    
+            // Validate Email (non-empty and correct format)
+            if (email.trim() === "") {
+                alert('Please enter your email.');
+                return;
+            } else if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+    
+            // Validate Phone Number (non-empty and 10 digits)
+            if (phone.trim() === "") {
+                alert('Please enter your phone number.');
+                return;
+            } else if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number (10 digits).');
+                return;
+            }
+    
+            // If all validations pass, show success message and redirect
+            alert('Login successful!');
+            console.log('Name:', name);
+            console.log('Email:', email);
+            console.log('Phone:', phone);
+    
+            // Redirect to index.html after successful login
+            window.location.href = 'index.html';  // This line redirects to the index page
+        });
+    </script>
+    
 </body>
-
 </html>
