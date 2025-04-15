@@ -293,3 +293,29 @@ nav ul li a:hover::after {
   font-weight: 600;
   color: var(--primary);
 }
+
+/* Cart Styles */
+.cart-container {
+max-width: 1000px;
+margin: 120px auto 4rem;
+padding: 2rem;
+background: var(--card-bg);
+border-radius: 16px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item {
+display: grid;
+grid-template-columns: auto 1fr auto;
+gap: 2rem;
+padding: 1.5rem;
+border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+align-items: center;
+}
+
+.cart-item img {
+width: 100px;
+height: 100px;
+object-fit: cover;
+border-radius: 8px;
+}
