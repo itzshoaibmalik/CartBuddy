@@ -229,9 +229,9 @@ nav ul li a:hover::after {
   margin-top: 1rem;
 }
 
-.specs-list li {
+/* .specs-list li {
   display: flex;
   justify-content: space-between;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-}
+} */
