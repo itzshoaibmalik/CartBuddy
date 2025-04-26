@@ -1,3 +1,46 @@
+/* ========================================= */
+/*          1. THEME VARIABLES             */
+/* ========================================= */
+:root {
+  --primary: #6C63FF;
+  --secondary: #2A2A2A;
+  --background: #F8F9FC;
+  --card-bg: #FFFFFF;
+  --text: #2A2A2A;
+  --border-color: rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme='dark'] {
+  --primary: #8f8aff;
+  --secondary: #dee2e6;
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --text: #dee2e6;
+  --border-color: rgba(255, 255, 255, 0.15);
+}
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text); /* Use variable */
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease; /* Add transition */
+}
+
+.theme-toggle-btn:hover {
+  color: var(--primary);
+}
+
+/* Icon Visibility */
+.theme-toggle-btn .fa-sun { display: none; }
+body:not([data-theme='dark']) .theme-toggle-btn .fa-moon { display: inline-block; }
+body[data-theme='dark'] .theme-toggle-btn .fa-sun { display: inline-block; }
+body[data-theme='dark'] .theme-toggle-btn .fa-moon { display: none; }
 /* Basic Reset */
 * {
   margin: 0;
