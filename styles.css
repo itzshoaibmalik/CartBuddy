@@ -1,0 +1,59 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic Body Styles */
+body {
+  font-family: sans-serif; /* Placeholder font */
+  line-height: 1.6;
+  background-color: #f4f4f4; /* Light grey background */
+  color: #333; /* Dark grey text */
+  padding-top: 60px;
+}
+
+/* Header Styling */
+header {
+  background: #fff; /* White background */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Make it stick to top */
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1200px; /* Limit nav width */
+  margin: 0 auto; /* Center nav */
+  padding: 0.5rem 1rem; /* Padding inside nav */
+  display: flex; /* Use flexbox */
+  justify-content: space-between; /* Space logo and links */
+  align-items: center; /* Vertically align items */
+  min-height: 50px; /* Ensure minimum height */
+}
+
+.logo {
+  color: #6C63FF; /* Placeholder primary color */
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none; /* Remove bullet points */
+  display: flex; /* Make links horizontal */
+  gap: 1rem; /* Space between links */
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+nav ul li a:hover {
+  color: #6C63FF; /* Primary color on hover */
+}
