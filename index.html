@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>CartBuddy</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <header>
@@ -20,7 +23,18 @@
                 <li><a href="cart.html">Cart</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
-        </nav>    </header>
+            <!-- Existing nav content -->
+            </ul>
+
+            <div class="nav-controls"> <!-- Optional wrapper -->
+                <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
+                    <i class="fas fa-moon"></i> <!-- Moon icon -->
+                    <i class="fas fa-sun"></i> <!-- Sun icon -->
+                </button>
+            </div>
+        </nav>
+        </nav>
+    </header>
 
     <main>
         <!-- Page content will go here -->
@@ -33,4 +47,5 @@
     <!-- Link JS (will create later) -->
     <script src="script.js"></script>
 </body>
+
 </html>
