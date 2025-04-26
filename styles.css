@@ -100,3 +100,142 @@ nav ul li a {
 nav ul li a:hover {
   color: #6C63FF; /* Primary color on hover */
 }
+/* ========================================= */
+/*         MOBILE NAVIGATION STYLES        */
+/* ========================================= */
+
+/* Hamburger Toggle Button */
+.nav-toggle {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem; /* Space from logo/links */
+  z-index: 1001; /* Above nav links container */
+  height: 30px;
+  width: 30px;
+  position: relative; /* For positioning spans */
+  /* Add order if needed with flexbox nav, or just position */
+  order: 3; /* Place after logo and links wrapper in flex order */
+}
+
+.hamburger {
+  display: block;
+  position: absolute;
+  width: 25px;
+  height: 3px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--text);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text);
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* Hamburger Animation to X */
+.nav-toggle.active .hamburger { background-color: transparent; }
+.nav-toggle.active .hamburger::before { transform: rotate(45deg); top: 0; }
+.nav-toggle.active .hamburger::after { transform: rotate(-45deg); top: 0; }
+
+/* Responsive Styles (Mobile Menu Activation) */
+@media (max-width: 991.98px) {
+  .nav-toggle {
+    display: block; /* Show hamburger */
+  }
+
+  .nav-links { /* Target the wrapper */
+    position: fixed;
+    top: 60px; /* Match header height */
+    right: -100%; /* Start off-screen */
+    width: clamp(250px, 70%, 300px); /* Responsive width */
+    height: calc(100vh - 60px); /* Full height minus header */
+    background-color: var(--card-bg);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: right 0.4s ease-in-out;
+    padding-top: 1rem; /* Space from top */
+    display: flex; /* Enable flex for column layout */
+    flex-direction: column; /* Stack items vertically */
+    overflow-y: auto; /* Allow scrolling */
+    border-left: 1px solid var(--border-color);
+  }
+   body[data-theme='dark'] .nav-links {
+         box-shadow: -5px 0 15px rgba(255, 255, 255, 0.08);
+    }
+
+  .nav-links.active {
+    right: 0; /* Slide in */
+  }
+
+  /* Style the UL inside the mobile menu */
+  .nav-links ul {
+    display: flex; /* Override desktop display:flex */
+    flex-direction: column; /* Stack list items */
+    align-items: stretch; /* Make items fill width */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    gap: 0; /* Remove desktop gap */
+     order: 1; /* Ensure links appear first in column */
+  }
+
+  .nav-links ul li {
+    width: 100%;
+    text-align: left; /* Align text left */
+  }
+
+  .nav-links ul li a {
+    display: block; /* Make link fill list item */
+    padding: 1rem 1.5rem; /* Padding for tap targets */
+    font-size: 1rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-color);
+  }
+  .nav-links ul li a:hover {
+       color: var(--primary);
+       background-color: rgba(108, 99, 255, 0.05); /* Subtle hover */
+  }
+   .nav-links ul li a::after {
+       display: none; /* Hide desktop underline */
+   }
+
+
+  /* Style theme toggle inside mobile menu */
+   .nav-links .theme-toggle-btn {
+        padding: 1rem 1.5rem;
+        margin-left: 0;
+        justify-content: flex-start; /* Align left */
+        width: 100%;
+        border-top: 1px solid var(--border-color); /* Separator line */
+        font-size: 1rem; /* Match link size */
+        font-weight: 500;
+         order: 2; /* Place after the ul links */
+  }
+   .nav-links .theme-toggle-btn i {
+         margin-right: 0.5rem; /* Space between icon and potential text */
+   }
+
+     /* Add text next to icons ONLY in mobile nav */
+    .nav-links .theme-toggle-btn .fa-moon::after {
+           content: " Dark Mode";
+    }
+    .nav-links .theme-toggle-btn .fa-sun::after {
+           content: " Light Mode";
+    }
+
+} /* End of media query */
