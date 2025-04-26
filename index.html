@@ -4,88 +4,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>CartBuddy</title>
+    <title>CartBuddy - Premium Tech Store & Rentals</title> <!-- Updated Title -->
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Optional: Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- or if it's .ico -->
+    <link rel="icon" href="favicon.ico">
+    <style>
+        /* Add specific styles for index page enhancements here or move to styles.css */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* Align text and image */
+            padding: 6rem 4rem;
+            /* Increased padding */
+            text-align: left;
+            /* Align text left */
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
+            /* Gradient overlay + image */
+            background-size: cover;
+            min-height: 60vh;
+            /* Ensure hero takes significant height */
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+            /* Ensure text is above background elements */
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            /* Slightly larger */
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            /* Slightly larger */
+            margin: 1.5rem 0;
+            max-width: 100%;
+            /* Reset max-width from centered version */
+            opacity: 0.95;
+        }
+
+        .hero .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .hero-image {
+            max-width: 500px;
+            /* Adjust as needed */
+            display: none;
+            /* Hide on small screens */
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            /* Optional: Add subtle animation */
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Responsive Hero */
+        @media (min-width: 992px) {
+            .hero-image {
+                display: block;
+                /* Show image on larger screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                text-align: center;
+                padding: 4rem 2rem;
+                flex-direction: column;
+                /* Stack content */
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 4rem 2rem;
+            background-color: var(--background);
+            /* Light background */
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            /* Add margin top */
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-item i {
+            /* Font Awesome Icon styling */
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+
+        /* Shop by Category Section */
+        .category-section {
+            padding: 4rem 2rem;
+            /* background: #fdfdfd; Optional slightly different bg */
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+        }
+
+        .category-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 1 / 1;
+            /* Make cards square */
+            transition: transform 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: scale(1.03);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            /* Darken image slightly */
+            transition: filter 0.3s ease;
+        }
+
+        .category-card:hover img {
+            filter: brightness(0.9);
+            /* Lighten image on hover */
+        }
+
+        .category-card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            /* Gradient overlay */
+            text-align: center;
+        }
+
+        .category-card h3 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .category-card a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-indent: -9999px;
+            /* Hide link text */
+        }
+
+        /* How Renting Works Section */
+        .how-it-works {
+            padding: 4rem 2rem;
+            background-color: var(--background);
+        }
+
+        .how-it-works-steps {
+            display: flex;
+            justify-content: space-around;
+            max-width: 1000px;
+            margin: 2rem auto 0;
+            gap: 2rem;
+            flex-wrap: wrap;
+            /* Allow wrapping on smaller screens */
+        }
+
+        .how-it-works-step {
+            flex: 1;
+            min-width: 220px;
+            /* Minimum width for each step */
+            text-align: center;
+        }
+
+        .how-it-works-step .step-number {
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .how-it-works-step h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .how-it-works-step p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Section Header Centering */
+        .section-header.centered {
+            text-align: center;
+            justify-content: center;
+            /* Center items if flex */
+        }
+
+        .section-header.centered .btn {
+            display: none;
+        }
+
+        /* Hide 'View All' if header is centered */
+    </style>
 </head>
 
 <body>
-
     <header>
         <nav>
+            <!-- Updated Logo -->
             <a href="index.html" class="logo">
-                <!-- Logo Image/Text later -->
-                CartBuddy
+                <img src="logo.png" alt="CartBuddy Logo" style="width: 100px; height: 60px;">
+                <!-- Adjust height as needed -->
             </a>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Shop</a></li>
-                <li><a href="cart.html">Cart</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="products.html?type=rental">Rent</a></li>
+                <li><a href="cart.html" id="cartLink">Cart</a></li> <!-- Added id for cart count -->
+                <li><a href="login.html" id="loginLogoutLink">Login</a></li>
             </ul>
-            <nav>
-                <a href="index.html" class="logo">
-                    <img src="logo.png" alt="CartBuddy Logo" style="height: 35px;"> <!-- Use image logo -->
-                </a>
-                <li><a href="cart.html" id="cartLink">Cart</a></li>
-
-                <!-- ADD THIS BUTTON -->
-                <button class="nav-toggle" id="nav-toggle-button" aria-label="toggle navigation">
-                    <span class="hamburger"></span>
-                </button>
-                <!-- / ADD THIS BUTTON -->
-
-                <!-- Wrapper for Desktop links + Theme Toggle (Good Practice) -->
-                <div class="nav-links" id="nav-links-container">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Shop</a></li>
-                        <!-- Add other links like Rent, Cart, Login if you conceptually added them-->
-                        <li><a href="cart.html" id="cartLink">Cart</a></li>
-                        <li><a href="login.html" id="loginLogoutLink">Login</a></li>
-                    </ul>
-                    <!-- Move Theme Toggle Button Inside the container for easier mobile handling -->
-                    <!-- Note: You might need to adjust JS selector if you move the theme button -->
-                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
-                        <i class="fas fa-moon"></i>
-                        <i class="fas fa-sun"></i>
-                    </button>
-                </div>
-
-            </nav>
-            </ul>
-
-            <div class="nav-controls"> <!-- Optional wrapper -->
-                <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
-                    <i class="fas fa-moon"></i> <!-- Moon icon -->
-                    <i class="fas fa-sun"></i> <!-- Sun icon -->
-                </button>
-            </div>
-        </nav>
         </nav>
     </header>
 
-    <main>
-        <!-- Featured Products Section -->
-        <section class="products-section">
-            <div class="section-header">
-                <h2>Featured Products</h2>
-                <a href="products.html" class="btn">View All</a>
-            </div>
-            <div class="product-grid">
-                <!-- Products will be loaded here by JavaScript -->
-                <p>Loading featured items...</p> <!-- Optional loading text -->
-            </div>
-        </section>
-        <!-- /Featured Products Section -->
-    </main>
+    <header>
+        <nav>
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <!-- If text logo: CartBuddy🛒 -->
+                <!-- If image logo: -->
+                <img src="logo.png" alt="CartBuddy Logo" style="height: 40px;">
+            </a>
 
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="nav-toggle" id="nav-toggle-button" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links Wrapper -->
+            <div class="nav-links" id="nav-links-container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?type=rental">Rent</a></li>
+                    <li><a href="cart.html" id="cartLink">Cart</a></li>
+                    <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li>
+                        <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
+                            <i class="fas fa-moon"></i> <!-- Moon icon -->
+                            <i class="fas fa-sun"></i>  <!-- Sun icon -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+<!-- 
+deals slider -->
+
+    <!-- Updated Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tech That Moves You Forward</h1>
+            <p>Experience the future of technology with our premium collection. Buy outright or rent the latest gadgets
+                with unmatched convenience.</p>
+            <a href="products.html" class="btn">Explore Products</a>
+        </div>
+        <div class="hero-image">
+            <!-- Replace with a relevant hero image -->
+            <img src="https://images.unsplash.com/photo-1634907959510-1e2b0c519be1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ5fHx0ZWNobm9sb2d5fGVufDB8fDB8fHww"
+                alt="Modern Tech Gadgets">
+        </div>
+    </section>
+
+    <!-- Deals Slider (keep as is or enhance later) -->
+    <div class="deals-slider">
+        <div class="deals">
+            <div class="deal">🔥 Flash Sale: Up to 50% Off on Selected Items</div>
+            <div class="deal">🎮 Gaming Bundle: Save $200 on Console + Games</div>
+            <div class="deal">💻 Student Discount: Extra 10% Off with Valid ID</div>
+            <div class="deal">📱 Trade-in Your Old Device: Get Extra $100 Credit</div>
+            <!-- Repeat deals to ensure smooth loop -->
+            <div class="deal">🔥 Flash Sale: Up to 50% Off on Selected Items</div>
+            <div class="deal">🎮 Gaming Bundle: Save $200 on Console + Games</div>
+            <div class="deal">💻 Student Discount: Extra 10% Off with Valid ID</div>
+            <div class="deal">📱 Trade-in Your Old Device: Get Extra $100 Credit</div>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="section-header centered">
+            <h2>Why Choose CartBuddy?</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-item">
+                <i class="fas fa-sync-alt"></i> <!-- Example Font Awesome icon -->
+                <h3>Flexible Options</h3>
+                <p>Choose to buy or rent the latest tech, fitting your budget and needs perfectly.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-check-circle"></i>
+                <h3>Premium Quality</h3>
+                <p>We curate only the best, most reliable gadgets from top brands you trust.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>Get your new tech delivered quickly and securely right to your doorstep.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-headset"></i>
+                <h3>Expert Support</h3>
+                <p>Our dedicated customer service team is here to help you every step of the way.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Featured Products Section -->
+    <section class="products-section">
+        <div class="section-header">
+            <h2>Featured Products</h2>
+            <a href="products.html" class="btn">View All</a>
+        </div>
+        <div class="product-grid">
+            <!-- Products loaded dynamically by script.js -->
+            <p>Loading featured items...</p>
+        </div>
+    </section>
+
+    <!-- Shop by Category Section -->
+    <section class="category-section">
+        <div class="section-header centered">
+            <h2>Shop by Category</h2>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1542393545-10f5cde2c810?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Laptops Category">
+                <div class="category-card-content">
+                    <h3>Laptops</h3>
+                </div>
+                <a href="products.html?category=laptops">Shop Laptops</a>
+                <!-- Update link later if category filter implemented -->
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1719945421298-f03d3d80c3e1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Smartphones Category">
+                <div class="category-card-content">
+                    <h3>Smartphones</h3>
+                </div>
+                <a href="products.html?category=phones">Shop Phones</a>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1585620385456-4759f9b5c7d9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Gaming Category">
+                <div class="category-card-content">
+                    <h3>Gaming</h3>
+                </div>
+                <a href="products.html?category=gaming">Shop Gaming</a>
+            </div>
+            <div class="category-card">
+                <img src="https://plus.unsplash.com/premium_photo-1693222144048-cf1d921ae4c1?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Accessories Category">
+                <div class="category-card-content">
+                    <h3>Accessories</h3>
+                </div>
+                <a href="products.html?category=accessories">Shop Accessories</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- How Renting Works -->
+    <section class="how-it-works">
+        <div class="section-header centered">
+            <h2>How Renting Works</h2>
+        </div>
+        <div class="how-it-works-steps">
+            <div class="how-it-works-step">
+                <div class="step-number">1</div>
+                <h3>Browse & Choose</h3>
+                <p>Select the tech you want to rent from our 'Rent' section.</p>
+            </div>
+            <div class="how-it-works-step">
+                <div class="step-number">2</div>
+                <h3>Select Duration</h3>
+                <p>Choose your desired rental period (e.g., monthly, 6 months).</p>
+            </div>
+            <div class="how-it-works-step">
+                <div class="step-number">3</div>
+                <h3>Receive & Enjoy</h3>
+                <p>We'll deliver the item. Enjoy using the latest tech!</p>
+            </div>
+            <div class="how-it-works-step">
+                <div class="step-number">4</div>
+                <h3>Return or Extend</h3>
+                <p>Easily return the item, or choose to extend your rental period.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section (Keep as is) -->
+    <section class="testimonials">
+        <!-- ... existing testimonial content ... -->
+        <div class="section-header">
+            <h2>What Our Customers Say</h2>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
+                <p class="testimonial-text">"The rental service is a game-changer! I could try the latest MacBook before
+                    making a purchase decision."</p>
+                <p class="testimonial-author">Alex Thompson</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                <p class="testimonial-text">"Incredible selection of products and the prices are unbeatable. My go-to
+                    tech store!"</p>
+                <p class="testimonial-author">Sarah Chen</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                <p class="testimonial-text">"Fast delivery and excellent customer support. They really care about their
+                    customers."</p>
+                <p class="testimonial-author">Michael Rodriguez</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Keep as is) -->
     <footer>
-        <!-- Footer content will go here -->
+        <!-- ... existing footer content ... -->
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About CartBuddy</h3> <!-- Changed Name -->
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Rentals</a></li> <!-- Updated -->
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/by.shoaib" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/itzshoaibmalik" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i> Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://youtube.com/itzshoaibmalik" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>
+                    </li>
+                </ul>
+                
+                </ul>
+            </div>
+        </div>
     </footer>
 
-    <!-- Link JS (will create later) -->
     <script src="script.js"></script>
+    <!-- Specific script call for index page -->
+    <script>
+        // Ensure functions needed for index are called
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFeaturedProducts(); // Load products into .product-grid
+            updateLoginStatus(); // Update login/logout link
+            updateCartCount();   // Update cart count display
+            // You might call other init functions specific to index here if needed
+        });
+    </script>
 </body>
 
 </html>
