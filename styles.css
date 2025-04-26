@@ -1190,6 +1190,84 @@ textarea:focus {
   }
 }
 
+/* Footer */
+footer {
+  background: var(--secondary);
+  color: rgb(62, 235, 177);
+  padding: 4rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+  color: rgba(181, 180, 182, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: white;
+}
+
+.checkout-btn {
+  background: linear-gradient(to right, #8e44ad, #ff6a00);
+  /* Gradient background */
+  color: white;
+  font-size: 18px;
+  /* Larger font */
+  font-weight: 700;
+  /* Bold text */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.checkout-btn:hover {
+  background: linear-gradient(to right, #ff6a00, #8e44ad);
+  /* Reverse gradient on hover */
+  transform: scale(1.05);
+  /* Slightly increase size */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  /* Stronger shadow */
+}
+
+.checkout-btn:active {
+  transform: scale(0.98);
+  /* Press effect */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
 /* ========================================= */
 /*          RESPONSIVE STYLES              */
 /* ========================================= */
