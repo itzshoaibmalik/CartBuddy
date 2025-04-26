@@ -1,3 +1,76 @@
+// --- Sample Product Data ---
+// (Initially just a few featured ones)
+const allProducts = [
+  { id: 1, name: 'AeroBook Pro 15"', price: 1499.99, rentPrice: 79.99, image: 'https://images.unsplash.com/photo-1695639509828-d4260075e370?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'laptop', buy: true, rent: true, specs: { ram: '16GB', storage: '512GB SSD', cpu: 'Core i7' } },
+  { id: 2, name: 'Pixel Phone X', price: 899.00, rentPrice: 49.99, image: 'https://images.unsplash.com/photo-1730818029305-5c53a66f9c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'phone', buy: true, rent: true, specs: { screen: '6.4 inch OLED', camera: '50MP', battery: '4500mAh' } },
+  { id: 3, name: 'Gamer Console Z', price: 499.50, rentPrice: null, image: 'https://images.unsplash.com/photo-1632803227975-b6a5688c9c46?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'gaming', buy: true, rent: false, specs: { storage: '1TB NVMe', resolution: '4K @ 120Hz', controller: 'Wireless Haptic' } },
+  { id: 4, name: 'SoundSphere Mini', price: 129.00, rentPrice: 15.99, image: 'https://images.unsplash.com/photo-1623773458421-af7f8fe20bcb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'accessory', buy: true, rent: true, specs: { connectivity: 'Bluetooth 5.2', playtime: '15 Hours', waterproof: 'IPX7' } },
+  // Add more products later if needed
+];
+
+// Function to create HTML for one product card
+function createProductCardHTML(product) {
+  // Determine price display based on buy/rent options
+  const priceHTML = product.buy ? `<span class="product-price">$${product.price.toFixed(2)}</span>` : '';
+  const rentPriceHTML = product.rent ? `<span class="product-rent-price">Rent: $${product.rentPrice.toFixed(2)}/mo</span>` : ''; // Example monthly
+
+  // Add basic action buttons (functionality later)
+  const buyButtonHTML = product.buy ? `<button class="btn btn-add-cart" data-id="${product.id}" data-type="buy">Add to Cart</button>` : '';
+  const rentButtonHTML = product.rent ? `<button class="btn btn-rent-now" data-id="${product.id}" data-type="rent">Rent Now</button>` : '';
+
+  // Basic Specs display
+  let specsPreviewHTML = '';
+  if (product.specs) {
+      specsPreviewHTML = Object.values(product.specs).slice(0, 2).join(' / ') + (Object.keys(product.specs).length > 2 ? '...' : '');
+  }
+
+  return `
+      <div class="product-card" data-id="${product.id}">
+          <img src="${product.image}" alt="${product.name}" class="product-image">
+          <div class="product-info">
+              <h3 class="product-name">${product.name}</h3>
+              <div class="product-pricing">
+                  ${priceHTML}
+                  ${rentPriceHTML}
+              </div>
+              <div class="product-details-preview">
+                  ${specsPreviewHTML}
+              </div>
+               <div class="product-actions">
+                  ${buyButtonHTML}
+                  ${rentButtonHTML}
+              </div>
+          </div>
+      </div>
+  `;
+}
+
+// Load featured products (first 4 from allProducts)
+function loadFeaturedProducts() {
+  const productsGrid = document.querySelector('.products-section .product-grid'); // Target specific grid
+  if (productsGrid) {
+      const featured = allProducts.slice(0, 4); // Get first 4
+      if(featured.length > 0) {
+          productsGrid.innerHTML = featured.map(createProductCardHTML).join('');
+      } else {
+           productsGrid.innerHTML = '<p>No featured products to display right now.</p>';
+      }
+
+  } else {
+       console.warn("Product grid container not found on this page for featured products.");
+  }
+}
+
+// --- DOMContentLoaded Listener ---
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Existing Theme Toggle & Mobile Nav Code ---
+  // ... (keep the code from previous steps) ...
+
+  // --- CALL loadFeaturedProducts ---
+  loadFeaturedProducts(); // Load products when the page is ready
+
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggleBtn = document.getElementById('theme-toggle');
 
