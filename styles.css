@@ -1566,8 +1566,7 @@ nav .logo img {
 /* ========================================= */
 
 
-main
-:root {
+main:root {
   /* Light Mode (Default) */
   --primary: #6C63FF;
   --secondary: #2A2A2A;
@@ -3005,7 +3004,7 @@ textarea:focus {
     /* Disable transform hover inside menu */
   }
 
-  }
+}
 
 /* Smaller Devices (Adjustments if needed) */
 @media (max-width: 767.98px) {
