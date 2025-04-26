@@ -23,7 +23,35 @@
                 <li><a href="cart.html">Cart</a></li>
                 <li><a href="login.html">Login</a></li>
             </ul>
-            <!-- Existing nav content -->
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="CartBuddy Logo" style="height: 35px;"> <!-- Use image logo -->
+                </a>
+
+                <!-- ADD THIS BUTTON -->
+                <button class="nav-toggle" id="nav-toggle-button" aria-label="toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <!-- / ADD THIS BUTTON -->
+
+                <!-- Wrapper for Desktop links + Theme Toggle (Good Practice) -->
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <!-- Add other links like Rent, Cart, Login if you conceptually added them-->
+                        <li><a href="cart.html" id="cartLink">Cart</a></li>
+                        <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                    </ul>
+                    <!-- Move Theme Toggle Button Inside the container for easier mobile handling -->
+                    <!-- Note: You might need to adjust JS selector if you move the theme button -->
+                    <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </div>
+
+            </nav>
             </ul>
 
             <div class="nav-controls"> <!-- Optional wrapper -->
