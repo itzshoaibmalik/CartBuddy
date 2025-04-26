@@ -129,3 +129,111 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Other existing JS function calls can go here ---
 
 }); // End of DOMContentLoaded
+// --- Cart Functionality ---
+
+// Get cart from localStorage or initialize an empty array
+function getCart() {
+  return JSON.parse(localStorage.getItem('cartBuddyCart')) || [];
+}
+
+// Save cart to localStorage
+function saveCart(cart) {
+  localStorage.setItem('cartBuddyCart', JSON.stringify(cart));
+}
+
+// Update cart count display in the header
+function updateCartCount() {
+  const cart = getCart();
+  // Calculate total quantity (sum of item.quantity)
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const cartLink = document.getElementById('cartLink'); // Uses the ID we confirmed/added
+  if (cartLink) {
+      // Update text content based on count
+      cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
+  }
+}
+
+// Add item to cart
+function addToCart(productId, type) { // type: 'buy' or 'rent'
+  // Find the full product details from our allProducts array
+  // Note: Convert productId from string (from data attribute) to number for comparison
+  const product = allProducts.find(p => p.id === Number(productId));
+  if (!product) {
+      console.error("Product not found:", productId);
+      return; // Exit if product doesn't exist
+  }
+
+  let cart = getCart();
+  // Create a unique ID for cart items based on product ID and type (e.g., "1-buy", "1-rent")
+  const cartItemId = `${productId}-${type}`;
+
+  // Check if the *exact* item (same product ID and same type) is already in the cart
+  const existingItemIndex = cart.findIndex(item => item.cartId === cartItemId);
+
+  if (existingItemIndex > -1) {
+      // If item (product + type) exists, increment its quantity
+      cart[existingItemIndex].quantity += 1;
+      console.log(`Incremented quantity for ${cartItemId}. New quantity: ${cart[existingItemIndex].quantity}`);
+  } else {
+      // If item doesn't exist, add it as a new entry
+      const newItem = {
+          cartId: cartItemId, // Unique identifier for this product *and* type
+          id: product.id,
+          name: product.name,
+          // Use buy price or rent price based on the 'type' argument
+          price: type === 'buy' ? product.price : product.rentPrice,
+          image: product.image,
+          quantity: 1,
+          type: type // Store whether it's a purchase or rental
+      };
+      cart.push(newItem);
+      console.log(`Added new item to cart: ${cartItemId}`);
+  }
+
+  saveCart(cart); // Save the updated cart back to localStorage
+  updateCartCount(); // Update the header count
+   alert(`${product.name} (${type === 'buy' ? 'Purchase' : 'Rental'}) added to cart!`); // User feedback
+}
+
+// --- (Keep existing product data and functions like createProductCardHTML, loadFeaturedProducts) ---
+
+// --- DOMContentLoaded Listener ---
+document.addEventListener('DOMContentLoaded', () => {
+  // --- Existing Theme Toggle & Mobile Nav Code ---
+  // ...
+
+  // --- Load Featured Products ---
+  loadFeaturedProducts(); // Loads product cards
+
+   // --- Initialize Cart Count on Load ---
+  updateCartCount(); // Show correct count when page loads
+
+  // --- Add Event Listener for Product Buttons (using Event Delegation) ---
+  const productGrid = document.querySelector('.products-section .product-grid');
+  if(productGrid) {
+      productGrid.addEventListener('click', (event) => {
+          // Check if the clicked element is an 'Add to Cart' or 'Rent Now' button
+          const targetButton = event.target.closest('.btn-add-cart, .btn-rent-now');
+
+          if (targetButton) {
+              // Prevent default button behavior if necessary (though not really needed here)
+              // event.preventDefault();
+
+              // Get the product ID and type from the button's data attributes
+              const productId = targetButton.dataset.id;
+              const productType = targetButton.dataset.type; // 'buy' or 'rent'
+
+              if (productId && productType) {
+                  addToCart(productId, productType);
+              } else {
+                  console.error("Button is missing data-id or data-type attribute", targetButton);
+              }
+          }
+      });
+  } else {
+      console.warn("Featured product grid not found for adding button listeners.");
+  }
+
+   // --- (Make sure other initial calls like theme application are still here) ---
+
+}); // End of DOMContentLoaded
