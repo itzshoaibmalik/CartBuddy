@@ -1564,7 +1564,6 @@ nav .logo img {
 /* ========================================= */
 /*           1. THEME VARIABLES            */
 /* ========================================= */
-=======
 
 
 main
@@ -1645,7 +1644,7 @@ header {
   /* Use variable */
   position: fixed;
   /* Keep using fixed if you were */
-=======
+
   --card-bg: #FFFFFF;
   --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
   /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
@@ -1691,7 +1690,7 @@ nav .logo img {
   width: auto;
   filter: var(--logo-filter);
   /* Apply filter for dark mode */
-=======
+
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -1834,10 +1833,6 @@ body[data-theme='dark'] .theme-toggle-btn .fa-moon {
   display: none;
 }
 
-=======
-  transition: color 0.3s;
-  position: relative;
-}
 
 nav ul li a::after {
   content: '';
