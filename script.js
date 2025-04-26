@@ -1,239 +1,526 @@
+// --- Basic Setup & Global Variables ---
+const productsGrid = document.querySelector('.product-grid'); // For index.html featured
+const allProductsGrid = document.getElementById('allProductsGrid'); // For products.html
+const cartItemsList = document.getElementById('cartItemsList');
+const cartSummaryDiv = document.getElementById('cartSummary');
+const cartSubtotalEl = document.getElementById('cartSubtotal');
+const cartShippingEl = document.getElementById('cartShipping');
+const cartTotalEl = document.getElementById('cartTotal');
+const checkoutOrderItemsEl = document.getElementById('checkoutOrderItems');
+const summarySubtotalEl = document.getElementById('summarySubtotal');
+const summaryShippingEl = document.getElementById('summaryShipping');
+const summaryTotalEl = document.getElementById('summaryTotal');
+const loginLogoutLink = document.getElementById('loginLogoutLink'); // Get nav link
+
 // --- Sample Product Data ---
-// (Initially just a few featured ones)
+// In a real application, this would come from an API
 const allProducts = [
-  { id: 1, name: 'AeroBook Pro 15"', price: 1499.99, rentPrice: 79.99, image: 'https://images.unsplash.com/photo-1695639509828-d4260075e370?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'laptop', buy: true, rent: true, specs: { ram: '16GB', storage: '512GB SSD', cpu: 'Core i7' } },
-  { id: 2, name: 'Pixel Phone X', price: 899.00, rentPrice: 49.99, image: 'https://images.unsplash.com/photo-1730818029305-5c53a66f9c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'phone', buy: true, rent: true, specs: { screen: '6.4 inch OLED', camera: '50MP', battery: '4500mAh' } },
-  { id: 3, name: 'Gamer Console Z', price: 499.50, rentPrice: null, image: 'https://images.unsplash.com/photo-1632803227975-b6a5688c9c46?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'gaming', buy: true, rent: false, specs: { storage: '1TB NVMe', resolution: '4K @ 120Hz', controller: 'Wireless Haptic' } },
-  { id: 4, name: 'SoundSphere Mini', price: 129.00, rentPrice: 15.99, image: 'https://images.unsplash.com/photo-1623773458421-af7f8fe20bcb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'accessory', buy: true, rent: true, specs: { connectivity: 'Bluetooth 5.2', playtime: '15 Hours', waterproof: 'IPX7' } },
-  // Add more products later if needed
+    { id: 1, name: 'AeroBook Pro 15"', price: 1499.99, rentPrice: 79.99, image: 'https://images.unsplash.com/photo-1695639509828-d4260075e370?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'laptop', buy: true, rent: true, specs: { ram: '16GB', storage: '512GB SSD', cpu: 'Core i7' } },
+    { id: 2, name: 'Pixel Phone X', price: 899.00, rentPrice: 49.99, image: 'https://images.unsplash.com/photo-1730818029305-5c53a66f9c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'phone', buy: true, rent: true, specs: { screen: '6.4 inch OLED', camera: '50MP', battery: '4500mAh' } },
+    { id: 3, name: 'Gamer Console Z', price: 499.50, rentPrice: null, image: 'https://images.unsplash.com/photo-1632803227975-b6a5688c9c46?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'gaming', buy: true, rent: false, specs: { storage: '1TB NVMe', resolution: '4K @ 120Hz', controller: 'Wireless Haptic' } },
+    { id: 4, name: 'SoundSphere Mini', price: 129.00, rentPrice: 15.99, image: 'https://images.unsplash.com/photo-1623773458421-af7f8fe20bcb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'accessory', buy: true, rent: true, specs: { connectivity: 'Bluetooth 5.2', playtime: '15 Hours', waterproof: 'IPX7' } },
+    { id: 5, name: 'WorkPad Tablet', price: 649.00, rentPrice: 34.99, image: 'https://images.unsplash.com/photo-1601836211234-ca6cbde9a1cb?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'tablet', buy: true, rent: true, specs: { display: '11 inch Liquid Retina', storage: '128GB', stylus: 'Supported' } },
+    { id: 6, name: 'VR Headset Odyssey', price: 399.00, rentPrice: 29.99, image: 'https://plus.unsplash.com/premium_photo-1729708654598-f0e68d8bd0bf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'gaming', buy: true, rent: true, specs: { resolution: '4K per eye', fov: '110 degrees', tracking: 'Inside-out' } },
+    { id: 7, name: 'ProCam Drone', price: 1199.00, rentPrice: 99.99, image: 'https://plus.unsplash.com/premium_photo-1677158265072-5d15db9e23b2?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'accessory', buy: true, rent: true, specs: { camera: '4K 60fps', flightTime: '30 mins', range: '10km' } },
+    { id: 8, name: 'Smart Watch Series 8', price: 399.00, rentPrice: null, image: 'https://images.unsplash.com/photo-1719075596884-2020f827a8dd?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'wearable', buy: true, rent: false, specs: { features: 'ECG, SpO2', display: 'Always-On', waterResist: '50m' } }
 ];
 
-// Function to create HTML for one product card
+// --- Product Loading ---
+
+// Function to create a product card HTML
 function createProductCardHTML(product) {
-  // Determine price display based on buy/rent options
-  const priceHTML = product.buy ? `<span class="product-price">$${product.price.toFixed(2)}</span>` : '';
-  const rentPriceHTML = product.rent ? `<span class="product-rent-price">Rent: $${product.rentPrice.toFixed(2)}/mo</span>` : ''; // Example monthly
+    const priceHTML = product.buy ? `<span class="product-price">$${product.price.toFixed(2)}</span>` : '';
+    const rentPriceHTML = product.rent ? `<span class="product-rent-price">Rent: $${product.rentPrice.toFixed(2)}/mo</span>` : ''; // Example monthly
 
-  // Add basic action buttons (functionality later)
-  const buyButtonHTML = product.buy ? `<button class="btn btn-add-cart" data-id="${product.id}" data-type="buy">Add to Cart</button>` : '';
-  const rentButtonHTML = product.rent ? `<button class="btn btn-rent-now" data-id="${product.id}" data-type="rent">Rent Now</button>` : '';
+    const buyButtonHTML = product.buy ? `<button class="btn btn-add-cart" onclick="addToCart(${product.id}, 'buy')">Add to Cart</button>` : '';
+    const rentButtonHTML = product.rent ? `<button class="btn btn-rent-now" onclick="addToCart(${product.id}, 'rent')">Rent Now</button>` : '';
 
-  // Basic Specs display
-  let specsPreviewHTML = '';
-  if (product.specs) {
-      specsPreviewHTML = Object.values(product.specs).slice(0, 2).join(' / ') + (Object.keys(product.specs).length > 2 ? '...' : '');
-  }
+    // Basic Specs display
+    let specsListHTML = '<ul class="specs-list">';
+    if (product.specs) {
+        for (const [key, value] of Object.entries(product.specs)) {
+            specsListHTML += `<li><span>${key.charAt(0).toUpperCase() + key.slice(1)}:</span> <span>${value}</span></li>`;
+        }
+    }
+    specsListHTML += '</ul>';
 
-  return `
-      <div class="product-card" data-id="${product.id}">
-          <img src="${product.image}" alt="${product.name}" class="product-image">
-          <div class="product-info">
-              <h3 class="product-name">${product.name}</h3>
-              <div class="product-pricing">
-                  ${priceHTML}
-                  ${rentPriceHTML}
-              </div>
-              <div class="product-details-preview">
-                  ${specsPreviewHTML}
-              </div>
-               <div class="product-actions">
-                  ${buyButtonHTML}
-                  ${rentButtonHTML}
-              </div>
-          </div>
-      </div>
-  `;
+
+    return `
+        <div class="product-card" data-id="${product.id}" data-type="${product.type}">
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <div class="product-pricing">
+                     ${priceHTML}
+                     ${rentPriceHTML}
+                 </div>
+                 <div class="product-actions">
+                     ${buyButtonHTML}
+                     ${rentButtonHTML}
+                </div>
+                <!-- Simple Specs Preview -->
+                <div class="product-details-preview" style="font-size: 0.85rem; color: #666; margin-top: 0.75rem;">
+                    ${Object.values(product.specs || {}).slice(0, 2).join(' / ')}...
+                </div>
+                 <!-- Full details could be shown on hover/click later -->
+                 <!-- <div class="product-details"> ${specsListHTML} </div> -->
+             </div>
+        </div>
+    `;
 }
 
-// Load featured products (first 4 from allProducts)
+// Load featured products on index.html
 function loadFeaturedProducts() {
-  const productsGrid = document.querySelector('.products-section .product-grid'); // Target specific grid
-  if (productsGrid) {
-      const featured = allProducts.slice(0, 4); // Get first 4
-      if(featured.length > 0) {
-          productsGrid.innerHTML = featured.map(createProductCardHTML).join('');
-      } else {
-           productsGrid.innerHTML = '<p>No featured products to display right now.</p>';
-      }
-
-  } else {
-       console.warn("Product grid container not found on this page for featured products.");
-  }
+    if (productsGrid) {
+        const featured = allProducts.slice(0, 4); // Display first 4 as featured
+        productsGrid.innerHTML = featured.map(createProductCardHTML).join('');
+    }
 }
 
-// --- DOMContentLoaded Listener ---
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Existing Theme Toggle & Mobile Nav Code ---
-  // ... (keep the code from previous steps) ...
+// Load all products on products.html, with optional filtering
+function loadAllProducts(filterType = null) { // filterType: null, 'buy', 'rental'
+    if (allProductsGrid) {
+        let productsToDisplay = allProducts;
 
-  // --- CALL loadFeaturedProducts ---
-  loadFeaturedProducts(); // Load products when the page is ready
+        // Apply filter based on the button clicked or URL param
+        if (filterType === 'buy') {
+            productsToDisplay = allProducts.filter(p => p.buy);
+            document.getElementById('productsPageTitle').textContent = "Shop Our Tech";
+            document.getElementById('productsPageSubtitle').textContent = "Browse products available for purchase.";
+        } else if (filterType === 'rental') {
+            productsToDisplay = allProducts.filter(p => p.rent);
+             document.getElementById('productsPageTitle').textContent = "Rent The Latest Tech";
+            document.getElementById('productsPageSubtitle').textContent = "Try out the newest gadgets with our flexible rental options.";
+        } else {
+             // 'all' or null
+             document.getElementById('productsPageTitle').textContent = "Discover Our Tech";
+             document.getElementById('productsPageSubtitle').textContent = "Browse our extensive collection of the latest gadgets available for purchase or rent.";
+        }
 
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggleBtn = document.getElementById('theme-toggle');
+        if (productsToDisplay.length > 0) {
+            allProductsGrid.innerHTML = productsToDisplay.map(createProductCardHTML).join('');
+        } else {
+            allProductsGrid.innerHTML = '<p>No products found matching your criteria.</p>';
+        }
+         updateFilterButtons(filterType); // Highlight active filter button
+    }
+}
 
-  const applyTheme = (theme) => {
-      if (theme === 'dark') {
-          document.body.setAttribute('data-theme', 'dark');
-      } else {
-          document.body.removeAttribute('data-theme');
-      }
-      // Optionally save theme to localStorage
-      localStorage.setItem('theme', theme);
-      console.log("Theme applied:", theme);
-  };
+// Add event listeners to filter buttons on products page
+function setupProductFilters() {
+    const filterAllBtn = document.getElementById('filterAllBtn');
+    const filterBuyBtn = document.getElementById('filterBuyBtn');
+    const filterRentBtn = document.getElementById('filterRentBtn');
 
-  // Apply initial theme on load
-  const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light
-  applyTheme(savedTheme);
+    filterAllBtn?.addEventListener('click', () => loadAllProducts(null));
+    filterBuyBtn?.addEventListener('click', () => loadAllProducts('buy'));
+    filterRentBtn?.addEventListener('click', () => loadAllProducts('rental'));
+}
 
-  // Theme toggle button event listener
-  if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', () => {
-          let currentTheme = document.body.getAttribute('data-theme');
-          let newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
-          applyTheme(newTheme);
-          console.log("Theme toggled to:", newTheme);
-      });
-  } else {
-      console.error("Theme toggle button (#theme-toggle) not found!");
-  }
+// Update active state of filter buttons
+function updateFilterButtons(activeFilter) {
+     const buttons = document.querySelectorAll('.filter-controls button');
+     buttons.forEach(btn => btn.classList.remove('active'));
 
-  // --- Add other JS functions/calls below or above ---
+     if (activeFilter === 'buy') {
+         document.getElementById('filterBuyBtn')?.classList.add('active');
+     } else if (activeFilter === 'rental') {
+         document.getElementById('filterRentBtn')?.classList.add('active');
+     } else {
+         document.getElementById('filterAllBtn')?.classList.add('active');
+     }
+ }
 
-}); // End of DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Existing Theme Toggle Code ---
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  // ... (applyTheme function, initial theme load, theme toggle listener) ...
 
-  // --- ADD MOBILE NAV CODE ---
-  const navToggleButton = document.getElementById('nav-toggle-button');
-  const navLinksContainer = document.getElementById('nav-links-container');
-
-  if (navToggleButton && navLinksContainer) {
-      navToggleButton.addEventListener('click', () => {
-          // Toggle classes on the button and the links container
-          navLinksContainer.classList.toggle('active');
-          navToggleButton.classList.toggle('active'); // For hamburger animation
-          console.log("Nav toggled. Active state:", navLinksContainer.classList.contains('active'));
-      });
-  } else {
-      if (!navToggleButton) console.error("Nav toggle button (#nav-toggle-button) not found!");
-      if (!navLinksContainer) console.error("Nav links container (#nav-links-container) not found!");
-  }
-  // --- / END MOBILE NAV CODE ---
-
-  // --- Other existing JS function calls can go here ---
-
-}); // End of DOMContentLoaded
 // --- Cart Functionality ---
 
-// Get cart from localStorage or initialize an empty array
+// Get cart from localStorage or initialize an empty one
 function getCart() {
-  return JSON.parse(localStorage.getItem('cartBuddyCart')) || [];
+    return JSON.parse(localStorage.getItem('cartBuddyCart')) || [];
 }
 
 // Save cart to localStorage
 function saveCart(cart) {
-  localStorage.setItem('cartBuddyCart', JSON.stringify(cart));
-}
-
-// Update cart count display in the header
-function updateCartCount() {
-  const cart = getCart();
-  // Calculate total quantity (sum of item.quantity)
-  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const cartLink = document.getElementById('cartLink'); // Uses the ID we confirmed/added
-  if (cartLink) {
-      // Update text content based on count
-      cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
-  }
+    localStorage.setItem('cartBuddyCart', JSON.stringify(cart));
 }
 
 // Add item to cart
 function addToCart(productId, type) { // type: 'buy' or 'rent'
-  // Find the full product details from our allProducts array
-  // Note: Convert productId from string (from data attribute) to number for comparison
-  const product = allProducts.find(p => p.id === Number(productId));
-  if (!product) {
-      console.error("Product not found:", productId);
-      return; // Exit if product doesn't exist
-  }
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) return;
 
-  let cart = getCart();
-  // Create a unique ID for cart items based on product ID and type (e.g., "1-buy", "1-rent")
-  const cartItemId = `${productId}-${type}`;
+    let cart = getCart();
+    // Create a unique ID for cart items based on product ID and type
+    const cartItemId = `${productId}-${type}`;
 
-  // Check if the *exact* item (same product ID and same type) is already in the cart
-  const existingItemIndex = cart.findIndex(item => item.cartId === cartItemId);
+    const existingItemIndex = cart.findIndex(item => item.cartId === cartItemId);
 
-  if (existingItemIndex > -1) {
-      // If item (product + type) exists, increment its quantity
-      cart[existingItemIndex].quantity += 1;
-      console.log(`Incremented quantity for ${cartItemId}. New quantity: ${cart[existingItemIndex].quantity}`);
-  } else {
-      // If item doesn't exist, add it as a new entry
-      const newItem = {
-          cartId: cartItemId, // Unique identifier for this product *and* type
-          id: product.id,
-          name: product.name,
-          // Use buy price or rent price based on the 'type' argument
-          price: type === 'buy' ? product.price : product.rentPrice,
-          image: product.image,
-          quantity: 1,
-          type: type // Store whether it's a purchase or rental
-      };
-      cart.push(newItem);
-      console.log(`Added new item to cart: ${cartItemId}`);
-  }
+    if (existingItemIndex > -1) {
+        // If item already exists, increment quantity
+        cart[existingItemIndex].quantity += 1;
+    } else {
+        // Add new item
+        cart.push({
+            cartId: cartItemId, // Unique identifier for this product *and* type (buy/rent)
+            id: product.id,
+            name: product.name,
+            price: type === 'buy' ? product.price : product.rentPrice,
+            image: product.image,
+            quantity: 1,
+            type: type // Store whether it's a purchase or rental
+        });
+    }
 
-  saveCart(cart); // Save the updated cart back to localStorage
-  updateCartCount(); // Update the header count
-   alert(`${product.name} (${type === 'buy' ? 'Purchase' : 'Rental'}) added to cart!`); // User feedback
+    saveCart(cart);
+    alert(`${product.name} (${type === 'buy' ? 'Purchase' : 'Rental'}) added to cart!`);
+    // Optionally update a mini-cart icon/count here
+    updateCartCount(); // Update cart count in header (optional)
 }
 
-// --- (Keep existing product data and functions like createProductCardHTML, loadFeaturedProducts) ---
+// Remove item from cart
+function removeFromCart(cartItemId) {
+    let cart = getCart();
+    cart = cart.filter(item => item.cartId !== cartItemId);
+    saveCart(cart);
+    loadCartItems(); // Reload cart display
+}
 
-// --- DOMContentLoaded Listener ---
+// Update item quantity in cart
+function updateCartQuantity(cartItemId, change) {
+    let cart = getCart();
+    const itemIndex = cart.findIndex(item => item.cartId === cartItemId);
+
+    if (itemIndex > -1) {
+        cart[itemIndex].quantity += change;
+        if (cart[itemIndex].quantity <= 0) {
+            // If quantity reaches 0 or less, remove the item
+            cart.splice(itemIndex, 1);
+        }
+        saveCart(cart);
+        loadCartItems(); // Reload cart display
+    }
+}
+
+
+// Load and display cart items on cart.html
+function loadCartItems() {
+    if (!cartItemsList || !cartSummaryDiv) return; // Only run on cart page
+
+    const cart = getCart();
+    cartItemsList.innerHTML = ''; // Clear current list
+
+    if (cart.length === 0) {
+        cartItemsList.innerHTML = `
+            <div class="empty-cart-message">
+                Your cart is currently empty. <a href="products.html">Start Shopping!</a>
+            </div>`;
+        cartSummaryDiv.style.display = 'none'; // Hide summary if cart is empty
+    } else {
+        let subtotal = 0;
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            const itemHTML = `
+                <div class="cart-item" data-cartid="${item.cartId}">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h3>${item.name}</h3>
+                        <span class="item-type">${item.type === 'buy' ? 'Purchase' : 'Rental (Monthly)'}</span>
+                    </div>
+                    <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                    <div class="cart-item-quantity">
+                         <button onclick="updateCartQuantity('${item.cartId}', -1)">-</button>
+                         <input type="number" value="${item.quantity}" min="1" readonly> <!-- Make readonly or implement direct input update -->
+                          <button onclick="updateCartQuantity('${item.cartId}', 1)">+</button>
+                     </div>
+
+                    <div class="cart-item-remove">
+                        <button onclick="removeFromCart('${item.cartId}')" title="Remove Item">🗑️</button>
+                    </div>
+
+                     <!-- Alternative: Display total per item -->
+                     <!-- <div class="cart-item-total">$${itemTotal.toFixed(2)}</div> -->
+                </div>
+            `;
+            cartItemsList.insertAdjacentHTML('beforeend', itemHTML);
+        });
+
+        // Calculate totals
+        const shippingCost = cart.length > 0 ? 5.00 : 0; // Example fixed shipping
+        const total = subtotal + shippingCost;
+
+        cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        cartShippingEl.textContent = `$${shippingCost.toFixed(2)}`;
+        cartTotalEl.textContent = `$${total.toFixed(2)}`;
+
+        cartSummaryDiv.style.display = 'block'; // Show summary
+    }
+    updateCartCount();
+}
+
+// Clear the entire cart (e.g., after checkout)
+function clearCart() {
+    localStorage.removeItem('cartBuddyCart');
+    // Optionally update UI elements immediately
+    if (cartItemsList) loadCartItems();
+     if (checkoutOrderItemsEl) loadCheckoutSummary();
+    updateCartCount();
+}
+
+// --- Checkout Page Functionality ---
+
+function loadCheckoutSummary() {
+     if (!checkoutOrderItemsEl || !summarySubtotalEl) return; // Only run on checkout page
+
+     const cart = getCart();
+     checkoutOrderItemsEl.innerHTML = ''; // Clear current list
+
+     if (cart.length === 0) {
+         checkoutOrderItemsEl.innerHTML = '<p>Your cart is empty. Cannot proceed to checkout.</p>';
+         // Disable form/button?
+         summarySubtotalEl.textContent = "$0.00";
+         summaryShippingEl.textContent = "$0.00";
+         summaryTotalEl.textContent = "$0.00";
+         document.querySelector('.place-order-btn')?.setAttribute('disabled', 'true');
+         return;
+     } else {
+          document.querySelector('.place-order-btn')?.removeAttribute('disabled');
+     }
+
+     let subtotal = 0;
+     cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+         const itemHTML = `
+             <div class="order-summary-item">
+                 <img src="${item.image}" alt="${item.name}">
+                 <div class="order-summary-item-info">
+                    <span class="item-name">${item.name} ${item.type === 'rent' ? '(Rental)' : ''}</span>
+                    <span class="item-qty">Qty: ${item.quantity}</span>
+                 </div>
+                 <span class="order-summary-item-price">$${itemTotal.toFixed(2)}</span>
+            </div>
+         `;
+         checkoutOrderItemsEl.insertAdjacentHTML('beforeend', itemHTML);
+     });
+
+     // Calculate totals (same logic as cart page for consistency)
+    const shippingCost = 5.00; // Assume fixed shipping
+     const total = subtotal + shippingCost;
+
+     summarySubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+     summaryShippingEl.textContent = `$${shippingCost.toFixed(2)}`;
+     summaryTotalEl.textContent = `$${total.toFixed(2)}`;
+ }
+
+
+// --- Login/Logout Status ---
+function updateLoginStatus() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (loginLogoutLink) {
+        if (isLoggedIn) {
+            loginLogoutLink.textContent = 'Logout';
+            loginLogoutLink.href = '#'; // Prevent default link behavior
+            loginLogoutLink.onclick = function(e) {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                alert('You have been logged out.');
+                updateLoginStatus(); // Update link text back to Login
+                 // Optional: Redirect to home or login page after logout
+                // window.location.href = 'index.html';
+            };
+        } else {
+            loginLogoutLink.textContent = 'Login';
+            loginLogoutLink.href = 'login.html';
+            loginLogoutLink.onclick = null; // Remove the logout handler
+        }
+    }
+}
+
+
+// --- Sample Product Data ---
+// Using Unsplash source for varied placeholder images
+// Removed duplicate declaration of allProducts
+
+// ... rest of script.js remains the same ...
+
+// --- Cart Count Indicator (Ensure this exists or add it) ---
+function updateCartCount() {
+   const cart = getCart();
+   const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+   const cartLink = document.getElementById('cartLink'); // Use the ID added to the cart link
+   if (cartLink) {
+       cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
+   }
+}
+
+// Make sure loadFeaturedProducts targets the correct grid on index.html
+// Removed duplicate declaration of productsGrid
+
+// ... rest of your script.js ...
+
+
+
+// --- Cart Count Indicator (Optional) ---
+function updateCartCount() {
+     const cart = getCart();
+     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+     const cartLink = document.querySelector('nav ul li a[href="cart.html"]');
+     if (cartLink) {
+         cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
+     }
+ }
+
+
+// --- Deals Slider Animation (Keep existing logic if present) ---
+const dealsContainer = document.querySelector('.deals');
+if (dealsContainer) {
+    // Basic animation restart logic if needed (or just rely on CSS animation)
+    // This might need refinement depending on how the CSS animation is set up
+}
+
+
+// --- Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
-  // --- Existing Theme Toggle & Mobile Nav Code ---
-  // ...
+    loadFeaturedProducts(); // Load products on index page
+    // loadAllProducts(); // Load products on products page is handled by its own script block now
+    loadCartItems(); // Load cart items if on cart page
+    loadCheckoutSummary(); // Load summary if on checkout page
+    updateLoginStatus(); // Check login status on page load
+    updateCartCount(); // Show initial cart count
 
-  // --- Load Featured Products ---
-  loadFeaturedProducts(); // Loads product cards
+    // Add any general event listeners here
+});
 
-   // --- Initialize Cart Count on Load ---
-  updateCartCount(); // Show correct count when page loads
+// --- Wait for DOM to be Ready ---
+document.addEventListener('DOMContentLoaded', () => {
 
-  // --- Add Event Listener for Product Buttons (using Event Delegation) ---
-  const productGrid = document.querySelector('.products-section .product-grid');
-  if(productGrid) {
-      productGrid.addEventListener('click', (event) => {
-          // Check if the clicked element is an 'Add to Cart' or 'Rent Now' button
-          const targetButton = event.target.closest('.btn-add-cart, .btn-rent-now');
+    // --- Element Selection (Check Console if these are null!) ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const navToggleButton = document.getElementById('nav-toggle-button');
+    const navLinksContainer = document.getElementById('nav-links-container');
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    const cartLink = document.getElementById('cartLink');
+    const featuredProductsGrid = document.querySelector('.products-section .product-grid'); // For index page
+    // Add other element selections needed globally or within functions
 
-          if (targetButton) {
-              // Prevent default button behavior if necessary (though not really needed here)
-              // event.preventDefault();
 
-              // Get the product ID and type from the button's data attributes
-              const productId = targetButton.dataset.id;
-              const productType = targetButton.dataset.type; // 'buy' or 'rent'
+    // --- Theme Toggle Logic ---
+    const applyTheme = (theme) => {
+        if (theme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+        } else {
+            document.body.removeAttribute('data-theme');
+        }
+        localStorage.setItem('theme', theme);
+        console.log("Theme applied:", theme); // Debugging
+    };
 
-              if (productId && productType) {
-                  addToCart(productId, productType);
-              } else {
-                  console.error("Button is missing data-id or data-type attribute", targetButton);
-              }
-          }
-      });
-  } else {
-      console.warn("Featured product grid not found for adding button listeners.");
-  }
+    // Apply initial theme
+    const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light if nothing saved
+    applyTheme(savedTheme);
 
-   // --- (Make sure other initial calls like theme application are still here) ---
+    // Theme toggle button event listener
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            let currentTheme = document.body.getAttribute('data-theme');
+            let newTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+            applyTheme(newTheme);
+             console.log("Theme toggled to:", newTheme); // Debugging
+        });
+    } else {
+        console.error("Theme toggle button (#theme-toggle) not found!");
+    }
 
-}); // End of DOMContentLoaded
+
+    // --- Mobile Navigation Toggle Logic ---
+    if (navToggleButton && navLinksContainer) {
+        navToggleButton.addEventListener('click', () => {
+            navLinksContainer.classList.toggle('active');
+            navToggleButton.classList.toggle('active'); // For hamburger animation
+            console.log("Nav toggled. Active state:", navLinksContainer.classList.contains('active')); // Debugging
+        });
+    } else {
+        if (!navToggleButton) console.error("Nav toggle button (#nav-toggle-button) not found!");
+        if (!navLinksContainer) console.error("Nav links container (#nav-links-container) not found!");
+    }
+
+
+    // --- Initialize Other Functions (Place your existing calls here) ---
+    if (typeof loadFeaturedProducts === 'function' && featuredProductsGrid) {
+        loadFeaturedProducts();
+    }
+    if (typeof loadCartItems === 'function') { // Check if function exists before calling
+         loadCartItems();
+    }
+    if (typeof loadCheckoutSummary === 'function') {
+         loadCheckoutSummary();
+    }
+    if (typeof updateLoginStatus === 'function') {
+         updateLoginStatus();
+    }
+    if (typeof updateCartCount === 'function') {
+         updateCartCount();
+    }
+     if (typeof loadAllProducts === 'function' && document.getElementById('allProductsGrid')) {
+         // Handle initial product page load (consider URL params)
+         const urlParams = new URLSearchParams(window.location.search);
+         const initialType = urlParams.get('type') || urlParams.get('category'); // Simplified check
+         loadAllProducts(initialType);
+         if (typeof setupProductFilters === 'function') {
+             setupProductFilters();
+         }
+    }
+     // Add initial calls for login/signup page specific scripts if needed
+
+     console.log("DOM fully loaded and script initialized."); // Debugging
+
+}); // --- End of DOMContentLoaded ---
+
+
+// ========================================= //
+//      YOUR EXISTING FUNCTIONS BELOW        //
+// (getCart, saveCart, addToCart,           //
+//  removeFromCart, updateCartQuantity,     //
+//  clearCart, updateLoginStatus,           //
+//  updateCartCount, loadFeaturedProducts,   //
+//  createProductCardHTML, loadAllProducts,  //
+//  setupProductFilters, loadCartItems,      //
+//  loadCheckoutSummary etc...)             //
+// ========================================= //
+
+// Example placeholder for updateLoginStatus if you don't have it
+function updateLoginStatus() {
+    const loginLogoutLink = document.getElementById('loginLogoutLink');
+    if (loginLogoutLink) {
+         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+         if (isLoggedIn) {
+             loginLogoutLink.textContent = 'Logout';
+             loginLogoutLink.href = '#';
+             loginLogoutLink.onclick = (e) => {
+                e.preventDefault();
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userEmail');
+                alert('Logged out.');
+                window.location.reload(); // Reload to reflect change everywhere
+             };
+         } else {
+             loginLogoutLink.textContent = 'Login';
+             loginLogoutLink.href = 'login.html';
+             loginLogoutLink.onclick = null;
+         }
+     }
+ }
+
+ // Example placeholder for updateCartCount
+ function updateCartCount() {
+    const cartLink = document.getElementById('cartLink');
+    if (cartLink) {
+         // Assume getCart exists and returns an array
+        const cart = typeof getCart === 'function' ? getCart() : [];
+         const count = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
+     }
+ }
