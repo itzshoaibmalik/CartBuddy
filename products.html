@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,94 +8,114 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         /* Additional styles for the products page */
         .page-header {
-            padding: 4rem 2rem 2rem; /* Adjust padding below header */
-            margin-top: 80px; /* Account for fixed header */
-            background: var(--background); /* Use background color */
+            padding: 4rem 2rem 2rem;
+            /* Adjust padding below header */
+            margin-top: 80px;
+            /* Account for fixed header */
+            background: var(--background);
+            /* Use background color */
             text-align: center;
         }
+
         .page-header h1 {
             font-size: 2.5rem;
             font-weight: 700;
-             color: var(--secondary);
-             margin-bottom: 0.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
         }
-         .page-header p {
-             font-size: 1.1rem;
-             color: var(--text);
-             opacity: 0.8;
-             max-width: 700px;
-             margin: 0 auto;
-         }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
         .filter-controls {
             text-align: center;
             margin-bottom: 2rem;
-             padding: 1rem 0;
-             background: var(--card-bg);
-             border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 0;
+            background: var(--card-bg);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
+
         .filter-controls label {
             margin-right: 0.5rem;
             font-weight: 500;
         }
-        .filter-controls select, .filter-controls button {
+
+        .filter-controls select,
+        .filter-controls button {
             padding: 0.5rem 1rem;
             margin: 0 0.5rem;
             border-radius: 6px;
             border: 1px solid #ccc;
-             font-size: 0.9rem;
+            font-size: 0.9rem;
         }
-         .filter-controls button {
-             background: var(--primary);
-             color: white;
-             cursor: pointer;
-             border-color: var(--primary); 
-         } 
-         /* hello am shivani */
-          .filter-controls button.active {
+
+        .filter-controls button {
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            border-color: var(--primary);
+        }
+
+        /* hello am shivani */
+        .filter-controls button.active {
             background: var(--gradient);
             font-weight: 600;
-         }
+        }
 
 
         /* Reuse product grid styles from styles.css */
-         .products-section {
+        .products-section {
             max-width: 1400px;
-            margin: 2rem auto 4rem; /* Adjust margin */
+            margin: 2rem auto 4rem;
+            /* Adjust margin */
             padding: 0 2rem;
         }
-         /* Add Add-to-cart Button styling within product card */
-         .product-actions {
-             margin-top: 1rem;
-             display: flex;
-             justify-content: space-between; /* Align buttons */
-             align-items: center;
-         }
 
-         .product-actions .btn {
-            padding: 0.6rem 1.2rem; /* Slightly smaller buttons */
+        /* Add Add-to-cart Button styling within product card */
+        .product-actions {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            /* Align buttons */
+            align-items: center;
+        }
+
+        .product-actions .btn {
+            padding: 0.6rem 1.2rem;
+            /* Slightly smaller buttons */
             font-size: 0.9rem;
-            flex-grow: 1; /* Make buttons fill space */
-            margin: 0 0.25rem; /* Small gap between buttons */
-         }
-         /* Add styles for .btn-add-cart if needed in the future */
-          .btn-rent-now {
-             /* Optional: Style Rent button differently if needed */
-             background: var(--accent);
-          }
-         .btn-rent-now:hover {
-             background: #e05a5a; /* Darker accent on hover */
-             box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-         }
+            flex-grow: 1;
+            /* Make buttons fill space */
+            margin: 0 0.25rem;
+            /* Small gap between buttons */
+        }
 
+        /* Add styles for .btn-add-cart if needed in the future */
+        .btn-rent-now {
+            /* Optional: Style Rent button differently if needed */
+            background: var(--accent);
+        }
 
+        .btn-rent-now:hover {
+            background: #e05a5a;
+            /* Darker accent on hover */
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+        }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -137,7 +158,7 @@
                     <li>
                         <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
                             <i class="fas fa-moon"></i> <!-- Moon icon -->
-                            <i class="fas fa-sun"></i>  <!-- Sun icon -->
+                            <i class="fas fa-sun"></i> <!-- Sun icon -->
                         </button>
                     </li>
                 </ul>
@@ -148,10 +169,11 @@
     <!-- Page Header -->
     <section class="page-header">
         <h1 id="productsPageTitle">Discover Our Tech</h1>
-        <p id="productsPageSubtitle">Browse our extensive collection of the latest gadgets available for purchase or rent.</p>
+        <p id="productsPageSubtitle">Browse our extensive collection of the latest gadgets available for purchase or
+            rent.</p>
     </section>
 
-     <!-- Filter Controls -->
+    <!-- Filter Controls -->
     <div class="filter-controls">
         <button id="filterAllBtn" class="active">All</button>
         <button id="filterBuyBtn">Buy Only</button>
@@ -168,7 +190,7 @@
 
     <!-- Products Section -->
     <section class="products-section">
-         <!-- Product Grid (will be populated by script.js) -->
+        <!-- Product Grid (will be populated by script.js) -->
         <div class="product-grid" id="allProductsGrid">
             <!-- Product cards will be loaded here -->
             <p>Loading products...</p>
@@ -177,11 +199,11 @@
 
     <!-- Footer -->
     <footer>
-         <div class="footer-content">
-             <!-- Footer sections from index.html -->
-             <div class="footer-section">
-                 <h3>About CartBuddy</h3> <!-- Changed Name -->
-                 <ul>
+        <div class="footer-content">
+            <!-- Footer sections from index.html -->
+            <div class="footer-section">
+                <h3>About CartBuddy</h3> <!-- Changed Name -->
+                <ul>
                     <li><a href="#">Our Story</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Press</a></li>
@@ -189,42 +211,43 @@
             </div>
             <div class="footer-section">
                 <h3>Customer Service</h3>
-                 <ul>
-                     <li><a href="#">Contact Us</a></li>
-                     <li><a href="#">Shipping Info</a></li>
-                     <li><a href="#">Returns & Rentals</a></li> <!-- Updated -->
-                 </ul>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Rentals</a></li> <!-- Updated -->
+                </ul>
             </div>
             <div class="footer-section">
-                 <h3>Connect</h3>
+                <h3>Connect</h3>
                 <ul>
-                  <li>
-                    <a href="https://instagram.com/by.shoaib" target="_blank" rel="noopener noreferrer">
-                      <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                  </li>
-                  
+                    <li>
+                        <a href="https://instagram.com/by.shoaib" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </li>
+
                     <li><a href="#">Twitter</a></li>
                     <li><a href="#">Facebook</a></li>
-                 </ul>
+                </ul>
             </div>
-         </div>
-     </footer>
+        </div>
+    </footer>
 
 
     <script src="script.js"></script>
     <!-- Specific script call for this page -->
-     <script>
-         document.addEventListener('DOMContentLoaded', () => {
-             // Determine initial filter based on URL parameter
-             const urlParams = new URLSearchParams(window.location.search);
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Determine initial filter based on URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
             const initialType = urlParams.get('type'); // 'rental' or null
 
             loadAllProducts(initialType); // Call the function from script.js
 
-             setupProductFilters(); // Setup filter button listeners
-             updateLoginStatus(); // Update login/logout link in header
-         });
-     </script>
+            setupProductFilters(); // Setup filter button listeners
+            updateLoginStatus(); // Update login/logout link in header
+        });
+    </script>
 </body>
+
 </html>
