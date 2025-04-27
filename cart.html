@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - CartBuddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">CartBuddy🛒</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="products.html?type=rental">Rent</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header>
+        <nav>
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <!-- If text logo: CartBuddy🛒 -->
+                <!-- If image logo: -->
+                <img src="logo.png" alt="CartBuddy Logo" style="height: 40px;">
+            </a>
+
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="nav-toggle" id="nav-toggle-button" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links Wrapper -->
+            <div class="nav-links" id="nav-links-container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?type=rental">Rent</a></li>
+                    <li><a href="cart.html" id="cartLink">Cart</a></li>
+                    <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li>
+                        <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
+                            <i class="fas fa-moon"></i> <!-- Moon icon -->
+                            <i class="fas fa-sun"></i>  <!-- Sun icon -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+
+        <div id="cartItemsList" class="cart-items-list">
+            <!-- Cart items will be loaded here by script.js -->
+            <div class="empty-cart-message">
+                Your cart is currently empty. <a href="products.html">Start Shopping!</a>
+            </div>
+        </div>
+
+        <div id="cartSummary" class="cart-summary" style="display: none;"> <!-- Hidden initially -->
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping (est.)</span>
+                <span id="cartShipping">$5.00</span> <!-- Example fixed shipping -->
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <div class="cart-actions">
+                 <a href="products.html" class="continue-shopping-btn">Continue Shopping</a>
+                 <button class="btn checkout-btn" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+         <div class="footer-content">
+            <!-- Footer sections from index.html -->
+             <div class="footer-section">
+                 <h3>About CartBuddy</h3>
+                 <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                 <ul>
+                     <li><a href="#">Contact Us</a></li>
+                     <li><a href="#">Shipping Info</a></li>
+                     <li><a href="#">Returns & Rentals</a></li>
+                 </ul>
+            </div>
+            <div class="footer-section">
+                 <h3>Connect</h3>
+                <ul>
+                  <li>
+                    <a href="https://instagram.com/by.shoaib" target="_blank" rel="noopener noreferrer">
+                      <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                  </li>
+                  
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                 </ul>
+            </div>
+         </div>
+     </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartItems(); // Function from script.js to populate the cart
+            updateLoginStatus(); // Update login/logout link
+        });
+    </script>
+</body>
+</html>
