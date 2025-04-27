@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CartBuddy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Copy the <style> block from login.html here -->
+    <style>
+        /* Styles specific to login/signup pages for background */
+        body.auth-page, html.auth-page {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        .auth-container {
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            width: 400px;
+             max-width: 90%;
+            z-index: 10;
+            text-align: center;
+             border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .auth-form h2 {
+            color: var(--secondary);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+
+         .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .auth-form input {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            background-color: #fff;
+             transition: border-color 0.3s;
+        }
+        .auth-form input:focus {
+             border-color: var(--primary);
+             outline: none;
+         }
+
+        .auth-form button {
+            padding: 1rem;
+            border: none;
+            background: var(--gradient);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 0.5rem; /* Add some space above button */
+        }
+
+         .auth-form button:hover {
+             transform: translateY(-2px);
+             box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+         }
+
+        .auth-link {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-top: 1.5rem;
+        }
+
+        .auth-link a {
+            color: var(--primary);
+            text-decoration: none;
+           
