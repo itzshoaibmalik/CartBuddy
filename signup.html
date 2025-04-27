@@ -13,11 +13,6 @@
             height: 100%;
             font-family: 'Inter', sans-serif;
             background-color: #f0f0f0;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
             padding: 0;
         }
 
@@ -98,4 +93,110 @@
         .auth-link a {
             color: var(--primary);
             text-decoration: none;
-            mm
+            font-weight: 600;
+        }
+
+        .auth-link a:hover {
+            text-decoration: underline;
+        }
+         .error-message {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            text-align: left; /* Align errors left */
+            display: none; /* Hidden by default */
+         }
+    </style>
+</head>
+<body class="auth-page">
+    <video autoplay muted loop class="background-video">
+        <!-- Use the same or a different background video -->
+         <source src="login.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="auth-container">
+        <form class="auth-form" id="signupForm">
+            <h2>Create Your Account</h2>
+            <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+             <div id="nameError" class="error-message">Name is required.</div>
+
+            <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+             <div id="emailError" class="error-message">Please enter a valid email.</div>
+
+            <input type="password" id="password" name="password" placeholder="Create a Password" required>
+             <div id="passwordError" class="error-message">Password must be at least 6 characters.</div>
+
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+             <div id="confirmPasswordError" class="error-message">Passwords do not match.</div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="auth-link">
+            Already have an account? <a href="login.html">Login Here</a>
+        </div>
+    </div>
+
+     <script src="script.js"></script>
+     <script>
+        // Add signup-specific validation if needed in script.js
+        document.getElementById('signupForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+             let isValid = true;
+
+            // Get elements
+             const name = document.getElementById('name');
+             const email = document.getElementById('email');
+             const password = document.getElementById('password');
+             const confirmPassword = document.getElementById('confirmPassword');
+
+             // Get error message elements
+             const nameError = document.getElementById('nameError');
+             const emailError = document.getElementById('emailError');
+             const passwordError = document.getElementById('passwordError');
+             const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+             // Reset errors
+             nameError.style.display = 'none';
+             emailError.style.display = 'none';
+             passwordError.style.display = 'none';
+             confirmPasswordError.style.display = 'none';
+
+             // Validate Name
+             if (name.value.trim() === '') {
+                 nameError.style.display = 'block';
+                 isValid = false;
+             }
+
+             // Validate Email
+             const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email.value)) {
+                 emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Password
+             if (password.value.length < 6) {
+                 passwordError.style.display = 'block';
+                 isValid = false;
+             }
+
+             // Validate Confirm Password
+            if (password.value !== confirmPassword.value || confirmPassword.value === '') {
+                 confirmPasswordError.style.display = 'block';
+                 isValid = false;
+             }
+
+
+            if (isValid) {
+                alert('Sign up successful! Please log in. (Redirecting...)');
+                 // In a real app, you'd send this data to a server to create the account
+                 console.log('Signup Data:', { name: name.value, email: email.value });
+                // Redirect to login page after successful signup
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>
