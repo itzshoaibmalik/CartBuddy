@@ -2961,4 +2961,8 @@ textarea:focus {
     font-weight: 500;
     color: var(--text);
     border-bottom: 1px solid var(--border-color);
+  }
+  .nav-links ul li:last-of-type a {
+    /* Target link inside last li */
+    border-bottom: none;
   } }
