@@ -2998,5 +2998,14 @@ textarea:focus {
     transform: none;
     /* Disable transform hover inside menu */
   }
+  /* Smaller Devices (Adjustments if needed) */
+@media (max-width: 767.98px) {
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  /* Reduce nav padding */
+  /* Adjust other element sizes as needed */
+}
 
 }
