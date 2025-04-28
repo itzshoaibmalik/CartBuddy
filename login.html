@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CartBuddy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+    </style>
+</head>
+<body class="auth-page"> <!-- Added class for potential scoping -->
+
+    <div class="auth-wrapper">
+        <video autoplay muted loop class="background-video">
+             <source src="login.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="auth-container">
+             <!-- Logo -->
+             <div class="auth-logo">
+                 <a href="index.html">
+                     <img src="logo.png" alt="CartBuddy Logo"> <!-- Use your logo file -->
+                </a>
+            </div>
+
+            <form class="auth-form" id="loginForm">
+                <h2>Welcome Back!</h2>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+                <div id="emailError" class="error-message">Please enter a valid email.</div>
+
+                <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                 <div id="passwordError" class="error-message">Password is required.</div>
+
+                <button type="submit">Login</button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">OR</div>
+
+            <!-- Social & Phone Login Options -->
+            <div class="social-login">
+                <button type="button" class="btn-social btn-google" id="googleLoginBtn">
+                     <i class="fab fa-google"></i> Sign in with Google
+                </button>
+                 <button type="button" class="btn-social btn-twitter" id="twitterLoginBtn">
+                    <i class="fab fa-twitter"></i> Sign in with Twitter
+                </button>
+                <button type="button" class="btn-social btn-phone" id="phoneLoginBtn">
+                     <i class="fas fa-phone"></i> Sign in with Phone Number
+                 </button>
+            </div>
+
+             <!-- Links: Forgot Password / Sign Up -->
+             <div class="auth-links">
+                 <div><a href="#">Forgot Password?</a></div>
+                <div>Don't have an account? <a href="signup.html">Sign Up Now</a></div>
+            </div>
+        </div>
+    </div> <!-- End auth-wrapper -->
+
+    <!-- Existing Validation Script -->
+     <script>
+        document.getElementById('loginForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // ... (keep your existing validation logic here) ...
+
+            // Example validation logic (replace with your full logic):
+            let isValid = true;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+             emailError.style.display = 'none';
+             passwordError.style.display = 'none';
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                 emailError.style.display = 'block'; isValid = false;
+             }
+             if (password.trim() === "") {
+                 passwordError.style.display = 'block'; isValid = false;
+             }
+
+
+            if (isValid) {
+                alert('Login attempt successful! (Redirecting...)');
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                window.location.href = 'index.html';
+            }
+        });
+    
+         // --- Placeholder Handlers for Social/Phone Buttons ---
+         function showNotImplementedAlert(e) {
+             e.preventDefault(); // Prevent any default button action
+             alert('This login method requires server-side integration and is not implemented in this demo.');
+         }
+
+         document.getElementById('googleLoginBtn')?.addEventListener('click', showNotImplementedAlert);
+         document.getElementById('twitterLoginBtn')?.addEventListener('click', showNotImplementedAlert);
+         document.getElementById('phoneLoginBtn')?.addEventListener('click', showNotImplementedAlert);
+
+    </script>
+</body>
+</html>
