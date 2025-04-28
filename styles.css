@@ -2951,4 +2951,14 @@ textarea:focus {
   .nav-links ul li {
     width: 100%;
     text-align: center;
+  }
+
+  .nav-links ul li a {
+    display: block;
+    padding: 1.2rem 1rem;
+    /* Generous tap targets */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-color);
   } }
