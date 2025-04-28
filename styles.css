@@ -2948,5 +2948,7 @@ textarea:focus {
     margin: 0;
     width: 100%;
   } 
-      }
-      
+  .nav-links ul li {
+    width: 100%;
+    text-align: center;
+  } }
