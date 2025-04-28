@@ -1,4 +1,3 @@
-
 # CartBuddy
 
 **Tech That Moves You Forward**  

@@ -1,0 +1,3017 @@
+/* Modern UI Styles */
+:root {
+  --primary: #6C63FF;
+  --secondary: #2A2A2A;
+  --accent: #FF6B6B;
+  --background: #F8F9FC;
+  --text: #2A2A2A;
+  --card-bg: #FFFFFF;
+  --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
+  /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Modern Header */
+header {
+  background: var(--card-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--gradient);
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 80px;
+  padding: 4rem 2rem;
+  background: var(--gradient);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+
+  background-image: url(second.jpg);
+  background-size: cover;
+
+  opacity: 0.1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Deals Slider */
+.deals-slider {
+  background: var(--card-bg);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.deals {
+  display: flex;
+  animation: slide 20s linear infinite;
+}
+
+.deal {
+  padding: 0 2rem;
+  white-space: nowrap;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Product Grid */
+.products-section {
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.product-details {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.product-card:hover .product-details {
+  display: block;
+}
+
+.specs-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.specs-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+}
+
+/* Testimonials */
+.testimonials {
+  background: var(--card-bg);
+  padding: 4rem 2rem;
+  margin: 4rem 0;
+}
+
+.testimonial-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--background);
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+}
+
+.testimonial-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primary);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Cart Styles */
+.cart-container {
+  max-width: 1000px;
+  margin: 120px auto 4rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cart-item img {
+    margin: 0 auto;
+  }
+}
+
+/* Footer */
+footer {
+  background: var(--secondary);
+  color: rgb(62, 235, 177);
+  padding: 4rem 2rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.footer-section h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+  color: rgba(181, 180, 182, 0.8);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: white;
+}
+
+.checkout-btn {
+  background: linear-gradient(to right, #8e44ad, #ff6a00);
+  /* Gradient background */
+  color: white;
+  font-size: 18px;
+  /* Larger font */
+  font-weight: 700;
+  /* Bold text */
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  /* Smooth transition */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.checkout-btn:hover {
+  background: linear-gradient(to right, #ff6a00, #8e44ad);
+  /* Reverse gradient on hover */
+  transform: scale(1.05);
+  /* Slightly increase size */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  /* Stronger shadow */
+}
+
+.checkout-btn:active {
+  transform: scale(0.98);
+  /* Press effect */
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Add to styles.css */
+
+/* Header logo image */
+nav .logo img {
+  display: block;
+  /* Removes extra space below image */
+  height: 40px;
+  /* Control height */
+  width: auto;
+  /* Maintain aspect ratio */
+}
+
+/* --- Styles moved from index.html <style> block --- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 4rem;
+  text-align: left;
+  /* Consider adding a fallback background color */
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  /* Ensure text is readable */
+  position: relative;
+  /* For potential pseudo-elements */
+  min-height: 60vh;
+  overflow: hidden;
+  /* Prevent animation overflow */
+}
+
+/* Optional: Add a subtle pattern overlay */
+/* .hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('data:image/svg+xml,...');
+  opacity: 0.05;
+  z-index: 0;
+} */
+
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  opacity: 0.95;
+}
+
+.hero .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  background: white;
+  /* Make button pop on gradient */
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero .btn:hover {
+  background: #f8f8f8;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  max-width: 500px;
+  display: none;
+  z-index: 1;
+  /* Ensure image is above potential pseudo-elements */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-image {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero .btn {
+    margin: 1.5rem auto 0;
+  }
+}
+
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 5rem 2rem;
+  /* Increased padding */
+  background-color: var(--background);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  /* Increased margin */
+}
+
+.feature-item {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  /* Increased padding */
+  background: var(--card-bg);
+  border-radius: 16px;
+  /* More rounded */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  /* More lift */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item i {
+  font-size: 3rem;
+  /* Larger icon */
+  margin-bottom: 1.5rem;
+  /* More space */
+  display: inline-block;
+  /* Gradient background for icon */
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Standard property */
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-item h3 {
+  font-size: 1.4rem;
+  /* Larger heading */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+/* Shop by Category Section */
+.category-section {
+  padding: 5rem 2rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Adjusted minmax */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+.category-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.category-card:hover {
+  transform: scale(1.04) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+  /* Slightly darker default */
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.category-card:hover img {
+  filter: brightness(0.85);
+  transform: scale(1.1);
+  /* Zoom image slightly on hover */
+}
+
+.category-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem;
+  /* More padding */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  text-align: center;
+  z-index: 2;
+  /* Above image */
+}
+
+.category-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  /* Larger */
+  margin-bottom: 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  /* Text shadow */
+}
+
+.category-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  z-index: 3;
+  /* Above content */
+}
+
+/* How Renting Works Section */
+.how-it-works {
+  padding: 5rem 2rem;
+  background-color: var(--background);
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1100px;
+  /* Wider */
+  margin: 3rem auto 0;
+  gap: 2.5rem;
+  /* More gap */
+  flex-wrap: wrap;
+  position: relative;
+  /* For connecting line */
+}
+
+/* Optional: Add connecting lines (pseudo-element) */
+.how-it-works-steps::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  /* Align with center of number */
+  left: 15%;
+  /* Start after first item roughly */
+  right: 15%;
+  /* End before last item roughly */
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  opacity: 0.3;
+  z-index: 0;
+  display: none;
+  /* Hide on smaller screens where items wrap */
+}
+
+@media (min-width: 992px) {
+
+  /* Show line only when items likely won't wrap */
+  .how-it-works-steps::before {
+    display: block;
+  }
+}
+
+.how-it-works-step {
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
+  position: relative;
+  /* For number positioning relative to line */
+  z-index: 1;
+  /* Above line */
+}
+
+.how-it-works-step .step-number {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  /* Increased margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+  border: 3px solid white;
+  /* White border around circle */
+}
+
+.how-it-works-step h3 {
+  font-size: 1.3rem;
+  /* Slightly larger */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.how-it-works-step p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* General Section Styling */
+.section-header {
+  margin-bottom: 3rem;
+  /* More space after headers */
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  /* Larger section titles */
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  /* Allow underline effect */
+  padding-bottom: 0.5rem;
+}
+
+/* Underline effect for section headers */
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  /* Width of underline */
+  height: 3px;
+  background: var(--gradient);
+}
+
+.section-header.centered {
+  text-align: center;
+  justify-content: center;
+}
+
+.section-header.centered h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center underline */
+}
+
+.section-header.centered .btn {
+  display: none;
+}
+
+
+/* Ensure product cards have correct images */
+.product-card .product-image {
+  /* Existing styles */
+  background-color: #eee;
+  /* Add a light background while image loads */
+}
+
+/* Update Testimonials for consistency */
+.testimonials {
+  padding: 5rem 2rem;
+}
+
+/* --- End of moved/added styles --- */
+
+
+
+/* Add specific styles for index page enhancements here or move to styles.css */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Align text and image */
+  padding: 6rem 4rem;
+  /* Increased padding */
+  text-align: left;
+  /* Align text left */
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
+  /* Gradient overlay + image */
+  background-size: cover;
+  min-height: 60vh;
+  /* Ensure hero takes significant height */
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+  /* Ensure text is above background elements */
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  /* Slightly larger */
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  /* Slightly larger */
+  margin: 1.5rem 0;
+  max-width: 100%;
+  /* Reset max-width from centered version */
+  opacity: 0.95;
+}
+
+.hero .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.hero-image {
+  max-width: 500px;
+  /* Adjust as needed */
+  display: none;
+  /* Hide on small screens */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  /* Optional: Add subtle animation */
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Hero */
+@media (min-width: 992px) {
+  .hero-image {
+    display: block;
+    /* Show image on larger screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    flex-direction: column;
+    /* Stack content */
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 4rem 2rem;
+  background-color: var(--background);
+  /* Light background */
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+  /* Add margin top */
+}
+
+.feature-item {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item i {
+  /* Font Awesome Icon styling */
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}
+
+.feature-item h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature-item p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+
+/* Shop by Category Section */
+.category-section {
+  padding: 4rem 2rem;
+  /* background: #fdfdfd; Optional slightly different bg */
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+
+.category-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  /* Make cards square */
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  /* Darken image slightly */
+  transition: filter 0.3s ease;
+}
+
+.category-card:hover img {
+  filter: brightness(0.9);
+  /* Lighten image on hover */
+}
+
+.category-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  /* Gradient overlay */
+  text-align: center;
+}
+
+.category-card h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.category-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  /* Hide link text */
+}
+
+/* How Renting Works Section */
+.how-it-works {
+  padding: 4rem 2rem;
+  background-color: var(--background);
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+}
+
+.how-it-works-step {
+  flex: 1;
+  min-width: 220px;
+  /* Minimum width for each step */
+  text-align: center;
+}
+
+.how-it-works-step .step-number {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-it-works-step h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works-step p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Section Header Centering */
+.section-header.centered {
+  text-align: center;
+  justify-content: center;
+  /* Center items if flex */
+}
+
+.section-header.centered .btn {
+  display: none;
+}
+
+/* ========================================= */
+/*          RESPONSIVE STYLES              */
+/* ========================================= */
+
+/* Large Devices (Desktops, < 1200px) */
+@media (max-width: 1199.98px) {
+  nav {
+    padding: 1rem 2rem;
+    /* Slightly reduce nav padding */
+  }
+
+  .hero {
+    padding: 5rem 3rem;
+    /* Reduce hero padding */
+  }
+
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .hero-image {
+    max-width: 450px;
+    /* Slightly smaller hero image */
+  }
+
+  .features-grid,
+  .category-grid,
+  .how-it-works-steps,
+  .testimonial-grid,
+  .footer-content {
+    max-width: 960px;
+    /* Reduce max-width of content grids */
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .how-it-works-step h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+/* Medium Devices (Tablets, < 992px) */
+@media (max-width: 991.98px) {
+  .hero {
+    /* Already handled hero image hiding and text centering in previous media query, fine-tune if needed */
+    padding: 4rem 2rem;
+    min-height: auto;
+    /* Let content define height */
+    flex-direction: column;
+    /* Ensure it stacks */
+    text-align: center;
+  }
+
+  .hero-image {
+    display: none;
+    /* Ensure image is hidden */
+  }
+
+  .hero-content {
+    max-width: 100%;
+    /* Allow text to take full width */
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+
+  .hero .btn {
+    margin: 1.5rem auto 0;
+    /* Center button */
+  }
+
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Allow slightly smaller items */
+    gap: 2rem;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 columns for categories */
+    gap: 1.5rem;
+  }
+
+  .how-it-works-steps {
+    flex-direction: column;
+    /* Stack steps vertically */
+    align-items: center;
+    /* Center stacked items */
+    gap: 2.5rem;
+  }
+
+  /* Hide the connecting line when steps stack */
+  .how-it-works-steps::before {
+    display: none;
+  }
+
+  .how-it-works-step {
+    max-width: 400px;
+    /* Limit width when stacked */
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+    /* Single column for testimonials */
+    max-width: 600px;
+    /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-grid {
+    /* Use the existing 768px rule or adjust here if needed */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Allow 2-3 items */
+  }
+
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    /* Footer two columns */
+    gap: 2rem;
+  }
+
+  /* Reduce general section padding */
+  .why-choose-us,
+  .products-section,
+  .category-section,
+  .how-it-works,
+  .testimonials {
+    padding: 4rem 2rem;
+  }
+}
+
+
+/* Small Devices (Landscape Phones, < 768px) */
+@media (max-width: 767.98px) {
+
+  /* Collapse Navigation */
+  nav ul {
+    display: none;
+    /* Hide the desktop nav links */
+    /* Consider adding a hamburger menu button here */
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    /* Adjust logo size */
+  }
+
+  nav .logo img {
+    height: 35px;
+    /* Adjust image logo height */
+  }
+
+  .hero {
+    padding: 3rem 1.5rem;
+    /* Further reduce hero padding */
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    /* Reduce heading size */
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero .btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+  }
+
+  .deals-slider {
+    padding: 0.5rem 0;
+    /* Reduce deals padding */
+  }
+
+  .deal {
+    font-size: 0.9rem;
+    /* Smaller deal text */
+    padding: 0 1.5rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    /* Stack header title and button */
+    align-items: center;
+    /* Center align */
+    text-align: center;
+    gap: 1rem;
+    /* Add gap between title and button */
+    margin-bottom: 2rem;
+    /* Adjust spacing */
+  }
+
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .section-header h2::after {
+    /* Center underline */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Removed empty ruleset for .section-header.centered */
+  .section-header a.btn {
+    /* Ensure button displays if needed */
+    display: inline-block;
+  }
+
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    /* Adjust minmax */
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    border-radius: 12px;
+    /* Slightly smaller radius */
+  }
+
+  .product-image {
+    height: 240px;
+    /* Adjust image height */
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+    /* Single column */
+    gap: 1.5rem;
+    max-width: 400px;
+    /* Constrain width */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .feature-item {
+    padding: 2rem 1rem;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Allow more smaller items */
+    gap: 1rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .category-card-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .how-it-works-steps {
+    gap: 2rem;
+    /* Adjust gap when stacked */
+  }
+
+  .how-it-works-step p {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-card {
+    padding: 1.5rem;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    /* Footer single column */
+    text-align: center;
+  }
+
+  .footer-section h3 {
+    margin-bottom: 1rem;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* General Padding Adjustments for smaller screens */
+  .why-choose-us,
+  .products-section,
+  .category-section,
+  .how-it-works,
+  .testimonials {
+    padding: 3rem 1rem;
+    /* Reduce padding significantly */
+  }
+
+  footer {
+    padding: 3rem 1rem;
+  }
+}
+
+
+/* Extra Small Devices (Portrait Phones, < 576px) */
+@media (max-width: 575.98px) {
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  nav .logo img {
+    height: 30px;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem;
+    /* Further reduce section headings */
+  }
+
+  .product-grid {
+    /* Adjust to ensure even single column looks okay if needed */
+    grid-template-columns: 1fr;
+    /* Force single column */
+    max-width: 320px;
+    /* Example: Limit width on smallest screens */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-image {
+    height: 280px;
+    /* Can increase height slightly for single column */
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* Maybe keep 2 columns even here */
+    gap: 0.8rem;
+  }
+
+  .category-card h3 {
+    font-size: 1rem;
+  }
+
+  /* Further reduce padding on smallest screens */
+  .why-choose-us,
+  .products-section,
+  .category-section,
+  .how-it-works,
+  .testimonials {
+    padding: 2.5rem 1rem;
+  }
+
+  footer {
+    padding: 2.5rem 1rem;
+  }
+}
+
+/* Deals Slider Fix */
+.deals-slider {
+  background: var(--card-bg);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  /* Add this line */
+  width: 100%;
+  /* Ensure it doesn't try to expand beyond viewport */
+  position: relative;
+  /* Good practice for containers with positioned/animated children */
+}
+
+/* Optional: If the .deals container itself needs explicit styling */
+.deals {
+  display: flex;
+  /* The width will be determined by its content + white-space: nowrap */
+  /* Ensure the animation uses transform */
+  animation: slide 20s linear infinite;
+}
+
+.deal {
+  padding: 0 2rem;
+  white-space: nowrap;
+  /* This keeps deals on one line, making .deals wide */
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+
+  /* Start with the beginning visible */
+  /* Adjust timing/percentage based on how much content vs viewport width */
+  /* If content width is roughly 2x viewport, 50% might be where the duplicate starts */
+  /* This requires tweaking based on content length */
+  100% {
+    transform: translateX(-50%);
+  }
+
+  /* Example: Move halfway if content is duplicated */
+}
+
+/* Make sure you have duplicated the deals inside the HTML: */
+/* index.html */
+
+/* ========================================= */
+/*           1. THEME VARIABLES            */
+/* ========================================= */
+
+
+main:root {
+  /* Light Mode (Default) */
+  --primary: #6C63FF;
+  --secondary: #2A2A2A;
+  --accent: #FF6B6B;
+  --background: #F8F9FC;
+  --text: #2A2A2A;
+  --text-muted: #6c757d;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
+  --logo-filter: none;
+  --input-bg: #FFFFFF;
+  --input-border: #ced4da;
+  --input-focus-border: var(--primary);
+  --button-text: #FFFFFF;
+}
+
+body[data-theme='dark'] {
+  /* Dark Mode Overrides */
+  --primary: #8f8aff;
+  /* Adjusted lighter primary */
+  --secondary: #dee2e6;
+  /* Lighter secondary */
+  --accent: #ff9f9f;
+  /* Lighter accent */
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --text: #dee2e6;
+  /* Main light text */
+  --text-muted: #adb5bd;
+  --border-color: rgba(255, 255, 255, 0.15);
+  /* Slightly more visible border */
+  --gradient: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  --logo-filter: brightness(0) invert(1);
+  --input-bg: #2a2a2a;
+  --input-border: #495057;
+  --input-focus-border: var(--primary);
+  --button-text: #FFFFFF;
+}
+
+/* ========================================= */
+/*       APPLY VARIABLES (EXAMPLES)          */
+/*   >>> YOU MUST DO THIS THOROUGHLY <<<     */
+/* ========================================= */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Add smooth transition for color changes */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  /* Add transitions to elements that change color */
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Stop transitions on pseudo-elements if they cause issues */
+*:before,
+*:after {
+  transition: none;
+}
+
+
+header {
+  background: var(--card-bg);
+  box-shadow: 0 4px 20px var(--border-color);
+  /* Use variable */
+  position: fixed;
+  /* Keep using fixed if you were */
+
+  --card-bg: #FFFFFF;
+  --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
+  /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Modern Header */
+header {
+  background: var(--card-bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+  /* Adjusted padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo img {
+  display: block;
+  height: 40px;
+  width: auto;
+  filter: var(--logo-filter);
+  /* Apply filter for dark mode */
+
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--gradient);
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+nav ul {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+nav ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  /* Add padding for easier interaction */
+}
+
+nav ul li a:hover {
+  color: var(--primary);
+}
+
+nav ul li a::after {
+  /* Existing underline styles */
+  background: var(--gradient);
+}
+
+.btn {
+  background: var(--gradient);
+  color: var(--button-text);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-block;
+  /* Ensure buttons behave consistently */
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+}
+
+body[data-theme='dark'] .btn:hover {
+  box-shadow: 0 4px 15px rgba(143, 138, 255, 0.3);
+  /* Adjusted dark shadow */
+}
+
+/* --- Add many more replacements here for ALL your elements --- */
+/* Examples: */
+/* .hero {
+  background:
+
+
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  /* ... */
+
+.product-name {
+  color: var(--text);
+}
+
+.product-price {
+  color: var(--primary);
+}
+
+input,
+select,
+textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+  /* ... */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--input-focus-border);
+  /* ... */
+}
+
+/* ... etc ... */
+
+
+/* ========================================= */
+/*          THEME TOGGLE BUTTON              */
+/* ========================================= */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  /* Adjusted size */
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--primary);
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Icon Visibility Logic */
+.theme-toggle-btn .fa-sun {
+  display: none;
+}
+
+/* Hide sun by default */
+body:not([data-theme='dark']) .theme-toggle-btn .fa-moon {
+  display: inline-block;
+}
+
+/* Show moon in light */
+body[data-theme='dark'] .theme-toggle-btn .fa-sun {
+  display: inline-block;
+}
+
+/* Show sun in dark */
+body[data-theme='dark'] .theme-toggle-btn .fa-moon {
+  display: none;
+}
+
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: var(--gradient);
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 80px;
+  padding: 4rem 2rem;
+  background: var(--gradient);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+
+  background-image: url(second.jpg);
+  background-size: cover;
+
+  opacity: 0.1;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Deals Slider */
+.deals-slider {
+  background: var(--card-bg);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.deals {
+  display: flex;
+  animation: slide 20s linear infinite;
+}
+
+.deal {
+  padding: 0 2rem;
+  white-space: nowrap;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Product Grid */
+.products-section {
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.product-details {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.product-card:hover .product-details {
+  display: block;
+}
+
+.specs-list {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.specs-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btn {
+  background: var(--gradient);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+}
+
+/* Testimonials */
+.testimonials {
+  background: var(--card-bg);
+  padding: 4rem 2rem;
+  margin: 4rem 0;
+}
+
+.testimonial-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--background);
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+}
+
+.testimonial-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--primary);
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Cart Styles */
+.cart-container {
+  max-width: 1000px;
+  margin: 120px auto 4rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: center;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .cart-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cart-item img {
+    margin: 0 auto;
+  }
+}
+
+/* Add to styles.css */
+
+/* Header logo image */
+nav .logo img {
+  display: block;
+  /* Removes extra space below image */
+  height: 40px;
+  /* Control height */
+  width: auto;
+  /* Maintain aspect ratio */
+}
+
+/* --- Styles moved from index.html <style> block --- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 4rem;
+  text-align: left;
+  /* Consider adding a fallback background color */
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
+  background-size: cover;
+  color: white;
+  /* Ensure text is readable */
+  position: relative;
+  /* For potential pseudo-elements */
+  min-height: 60vh;
+  overflow: hidden;
+  /* Prevent animation overflow */
+}
+
+/* Optional: Add a subtle pattern overlay */
+/* .hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('data:image/svg+xml,...');
+  opacity: 0.05;
+  z-index: 0;
+} */
+
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  line-height: 1.2;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+  max-width: 100%;
+  opacity: 0.95;
+}
+
+.hero .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  background: white;
+  /* Make button pop on gradient */
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hero .btn:hover {
+  background: #f8f8f8;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.hero-image {
+  max-width: 500px;
+  display: none;
+  z-index: 1;
+  /* Ensure image is above potential pseudo-elements */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (min-width: 992px) {
+  .hero-image {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  .hero .btn {
+    margin: 1.5rem auto 0;
+  }
+}
+
+
+/* Why Choose Us Section */
+.why-choose-us {
+  padding: 5rem 2rem;
+  /* Increased padding */
+  background-color: var(--background);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  /* Increased margin */
+}
+
+.feature-item {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  /* Increased padding */
+  background: var(--card-bg);
+  border-radius: 16px;
+  /* More rounded */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  /* More lift */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item i {
+  font-size: 3rem;
+  /* Larger icon */
+  margin-bottom: 1.5rem;
+  /* More space */
+  display: inline-block;
+  /* Gradient background for icon */
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* Standard property */
+  -webkit-text-fill-color: transparent;
+}
+
+.feature-item h3 {
+  font-size: 1.4rem;
+  /* Larger heading */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.feature-item p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+/* Shop by Category Section */
+.category-section {
+  padding: 5rem 2rem;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  /* Adjusted minmax */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+
+.category-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.category-card:hover {
+  transform: scale(1.04) translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+  /* Slightly darker default */
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.category-card:hover img {
+  filter: brightness(0.85);
+  transform: scale(1.1);
+  /* Zoom image slightly on hover */
+}
+
+.category-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem;
+  /* More padding */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
+  text-align: center;
+  z-index: 2;
+  /* Above image */
+}
+
+.category-card h3 {
+  color: white;
+  font-size: 1.5rem;
+  /* Larger */
+  margin-bottom: 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  /* Text shadow */
+}
+
+.category-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  z-index: 3;
+  /* Above content */
+}
+
+/* How Renting Works Section */
+.how-it-works {
+  padding: 5rem 2rem;
+  background-color: var(--background);
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1100px;
+  /* Wider */
+  margin: 3rem auto 0;
+  gap: 2.5rem;
+  /* More gap */
+  flex-wrap: wrap;
+  position: relative;
+  /* For connecting line */
+}
+
+/* Optional: Add connecting lines (pseudo-element) */
+.how-it-works-steps::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  /* Align with center of number */
+  left: 15%;
+  /* Start after first item roughly */
+  right: 15%;
+  /* End before last item roughly */
+  height: 2px;
+  background: linear-gradient(to right, var(--primary), var(--accent));
+  opacity: 0.3;
+  z-index: 0;
+  display: none;
+  /* Hide on smaller screens where items wrap */
+}
+
+@media (min-width: 992px) {
+
+  /* Show line only when items likely won't wrap */
+  .how-it-works-steps::before {
+    display: block;
+  }
+}
+
+.how-it-works-step {
+  flex: 1;
+  min-width: 220px;
+  text-align: center;
+  position: relative;
+  /* For number positioning relative to line */
+  z-index: 1;
+  /* Above line */
+}
+
+.how-it-works-step .step-number {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+  /* Increased margin */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(108, 99, 255, 0.3);
+  border: 3px solid white;
+  /* White border around circle */
+}
+
+.how-it-works-step h3 {
+  font-size: 1.3rem;
+  /* Slightly larger */
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.how-it-works-step p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* General Section Styling */
+.section-header {
+  margin-bottom: 3rem;
+  /* More space after headers */
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  /* Larger section titles */
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  /* Allow underline effect */
+  padding-bottom: 0.5rem;
+}
+
+/* Underline effect for section headers */
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  /* Width of underline */
+  height: 3px;
+  background: var(--gradient);
+}
+
+.section-header.centered {
+  text-align: center;
+  justify-content: center;
+}
+
+.section-header.centered h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+  /* Center underline */
+}
+
+.section-header.centered .btn {
+  display: none;
+}
+
+
+/* Ensure product cards have correct images */
+.product-card .product-image {
+  /* Existing styles */
+  background-color: #eee;
+  /* Add a light background while image loads */
+}
+
+/* Update Testimonials for consistency */
+.testimonials {
+  padding: 5rem 2rem;
+}
+
+/* --- End of moved/added styles --- */
+
+
+
+/* Add specific styles for index page enhancements here or move to styles.css */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Align text and image */
+  padding: 6rem 4rem;
+  /* Increased padding */
+  text-align: left;
+  /* Align text left */
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
+  /* Gradient overlay + image */
+  background-size: cover;
+  min-height: 60vh;
+  /* Ensure hero takes significant height */
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+  /* Ensure text is above background elements */
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  /* Slightly larger */
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  /* Slightly larger */
+  margin: 1.5rem 0;
+  max-width: 100%;
+  /* Reset max-width from centered version */
+  opacity: 0.95;
+}
+
+.hero .btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.hero-image {
+  max-width: 500px;
+  /* Adjust as needed */
+  display: none;
+  /* Hide on small screens */
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  /* Optional: Add subtle animation */
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Responsive Hero */
+@media (min-width: 992px) {
+  .hero-image {
+    display: block;
+    /* Show image on larger screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+    flex-direction: column;
+    /* Stack content */
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+/* Shop by Category Section */
+.category-section {
+  padding: 4rem 2rem;
+  /* background: #fdfdfd; Optional slightly different bg */
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto 0;
+}
+
+.category-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  /* Make cards square */
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  /* Darken image slightly */
+  transition: filter 0.3s ease;
+}
+
+.category-card:hover img {
+  filter: brightness(0.9);
+  /* Lighten image on hover */
+}
+
+.category-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  /* Gradient overlay */
+  text-align: center;
+}
+
+.category-card h3 {
+  color: white;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.category-card a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: -9999px;
+  /* Hide link text */
+}
+
+/* How Renting Works Section */
+.how-it-works {
+  padding: 4rem 2rem;
+  background-color: var(--background);
+}
+
+.how-it-works-steps {
+  display: flex;
+  justify-content: space-around;
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+}
+
+.how-it-works-step {
+  flex: 1;
+  min-width: 220px;
+  /* Minimum width for each step */
+  text-align: center;
+}
+
+.how-it-works-step .step-number {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-it-works-step h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works-step p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Section Header Centering */
+.section-header.centered {
+  text-align: center;
+  justify-content: center;
+  /* Center items if flex */
+}
+
+.section-header.centered .btn {
+  display: none;
+}
+
+
+/* Make sure you have duplicated the deals inside the HTML: */
+/* index.html */
+
+
+
+/* --- Add many more replacements here for ALL your elements --- */
+/* Examples: */
+/* .hero {
+  background:
+
+
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  /* ... */
+
+.product-name {
+  color: var(--text);
+}
+
+.product-price {
+  color: var(--primary);
+}
+
+input,
+select,
+textarea {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--text);
+  /* ... */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--input-focus-border);
+  /* ... */
+}
+
+/* ... etc ... */
+
+
+
+
+/* Hide moon in dark */
+
+
+/* ========================================= */
+/*         MOBILE NAVIGATION STYLES        */
+/* ========================================= */
+
+/* Hamburger Toggle Button */
+.nav-toggle {
+  display: none;
+  /* Hidden on desktop */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  /* Keep space from logo/links */
+  z-index: 1001;
+  height: 30px;
+  /* Give it explicit height */
+  width: 30px;
+  /* Give it explicit width */
+  position: relative;
+  /* For positioning spans */
+}
+
+.hamburger {
+  display: block;
+  position: absolute;
+  /* Position relative to button */
+  width: 25px;
+  height: 3px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* Center precisely */
+  background-color: var(--text);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--text);
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* Hamburger Animation to X */
+.nav-toggle.active .hamburger {
+  background-color: transparent;
+}
+
+
+.nav-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.nav-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+
+/* ========================================= */
+/*          RESPONSIVE STYLES              */
+/* ========================================= */
+
+/* Add this section AT THE END of your styles.css */
+
+/* Medium Devices & Smaller (Tablets & Phones, < 992px) */
+@media (max-width: 991.98px) {
+  .nav-toggle {
+    display: block;
+    /* Show hamburger */
+  }
+
+  /* Style the container that HOLDS the links */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    /* Start off-screen */
+    width: clamp(250px, 70%, 320px);
+    /* Responsive width */
+    height: 100vh;
+    background-color: var(--card-bg);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+
+    body[data-theme='dark'] & {
+      /* Dark mode shadow */
+      box-shadow: -5px 0 15px rgba(255, 255, 255, 0.08);
+    }
+
+    z-index: 1000;
+    transition: right 0.4s ease-in-out;
+    padding-top: 5rem;
+    /* Space from top */
+    display: flex;
+    flex-direction: column;
+    /* Stack ul inside */
+    overflow-y: auto;
+    /* Allow scrolling if links exceed height */
+  }
+
+  .nav-links.active {
+    right: 0;
+    /* Slide in */
+  }
+
+  /* Style the UL inside the mobile menu */
+  .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  .nav-links ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links ul li a {
+    display: block;
+    padding: 1.2rem 1rem;
+    /* Generous tap targets */
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-links ul li:last-of-type a {
+    /* Target link inside last li */
+    border-bottom: none;
+  }
+
+  .nav-links ul li a:hover,
+  .nav-links ul li a:focus {
+    /* Add focus style */
+    background-color: rgba(108, 99, 255, 0.1);
+    color: var(--primary);
+    outline: none;
+  }
+
+  /* Position theme toggle button inside the mobile menu */
+  .nav-links ul li .theme-toggle-btn {
+    font-size: 1.5rem;
+    /* Make it larger for tapping */
+    padding: 1rem;
+    /* More padding */
+    width: 100%;
+    /* Make it fill the list item */
+    justify-content: center;
+    /* Center icon */
+    border-bottom: 1px solid var(--border-color);
+    margin-left: 0;
+    /* Reset margin */
+  }
+
+  .nav-links ul li:last-of-type .theme-toggle-btn {
+    border-bottom: none;
+  }
+
+  .nav-links ul li .theme-toggle-btn:hover {
+    background-color: rgba(108, 99, 255, 0.1);
+    /* Hover effect */
+    color: var(--primary);
+    transform: none;
+    /* Disable transform hover inside menu */
+  }
+
+}
+
+/* Smaller Devices (Adjustments if needed) */
+@media (max-width: 767.98px) {
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  /* Reduce nav padding */
+  /* Adjust other element sizes as needed */
+}

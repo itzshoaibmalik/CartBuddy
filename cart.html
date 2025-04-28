@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - CartBuddy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        .cart-container {
+            max-width: 1000px;
+            margin: 100px auto 4rem;
+            /* Adjusted top margin */
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .cart-container h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            text-align: center;
+        }
+
+        .cart-items-list {
+            margin-bottom: 2rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 100px 1fr auto auto auto;
+            /* Image, Info, Price, Qty, Remove */
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            align-items: center;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .cart-item-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cart-item-info .item-type {
+            /* Style for Buy/Rent text */
+            font-weight: 500;
+            color: var(--primary);
+            display: block;
+            margin-top: 0.3rem;
+        }
+
+
+        .cart-item-price,
+        .cart-item-total {
+            font-size: 1.1rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .cart-item-quantity input {
+            width: 60px;
+            padding: 0.4rem;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            /* Add spacing around input */
+        }
+
+        .cart-item-quantity button {
+            background: none;
+            border: 1px solid #ccc;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+        }
+
+
+        .cart-item-remove button {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .cart-item-remove button:hover {
+            color: darkred;
+        }
+
+        .cart-summary {
+            background-color: var(--background);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+        }
+
+        .cart-summary h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--primary);
+        }
+
+        /* changes made in this emmorce website in cart and product page */
+        /* these changes can be viewed by you all */
+
+        .cart-actions {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .continue-shopping-btn {
+            background: none;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+            /* For <a> tag version */
+        }
+
+        .continue-shopping-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        kkk .empty-cart-message {
+            text-align: center;
+            padding: 3rem 0;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .empty-cart-message a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">CartBuddy🛒</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Shop</a></li>
+                <li><a href="products.html?type=rental">Rent</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header>
+        <nav>
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <!-- If text logo: CartBuddy🛒 -->
+                <!-- If image logo: -->
+                <img src="logo.png" alt="CartBuddy Logo" style="height: 40px;">
+            </a>
+
+            <!-- Hamburger Button (Mobile Only) -->
+            <button class="nav-toggle" id="nav-toggle-button" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links Wrapper -->
+            <div class="nav-links" id="nav-links-container">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="products.html?type=rental">Rent</a></li>
+                    <li><a href="cart.html" id="cartLink">Cart</a></li>
+                    <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                    <!-- Dark Mode Toggle Button -->
+                    <li>
+                        <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
+                            <i class="fas fa-moon"></i> <!-- Moon icon -->
+                            <i class="fas fa-sun"></i> <!-- Sun icon -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <h1>Your Cart</h1>
+
+        <div id="cartItemsList" class="cart-items-list">
+            <!-- Cart items will be loaded here by script.js -->
+            <div class="empty-cart-message">
+                Your cart is currently empty. <a href="products.html">Start Shopping!</a>
+            </div>
+        </div>
+
+        <div id="cartSummary" class="cart-summary" style="display: none;"> <!-- Hidden initially -->
+            <h2>Order Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cartSubtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping (est.)</span>
+                <span id="cartShipping">$5.00</span> <!-- Example fixed shipping -->
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="cartTotal">$0.00</span>
+            </div>
+            <div class="cart-actions">
+                <a href="products.html" class="continue-shopping-btn">Continue Shopping</a>
+                <button class="btn checkout-btn" onclick="window.location.href='checkout.html'">Proceed to
+                    Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Footer sections from index.html -->
+            <div class="footer-section">
+                <h3>About CartBuddy</h3>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Rentals</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li>
+                        <a href="https://instagram.com/by.shoaib" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                    </li>
+
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCartItems(); // Function from script.js to populate the cart
+            updateLoginStatus(); // Update login/logout link
+        });
+    </script>
+</body>
+
+</html>
