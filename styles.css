@@ -2990,4 +2990,13 @@ textarea:focus {
   }
   .nav-links ul li:last-of-type .theme-toggle-btn {
     border-bottom: none;
-  } }
+  }
+  .nav-links ul li .theme-toggle-btn:hover {
+    background-color: rgba(108, 99, 255, 0.1);
+    /* Hover effect */
+    color: var(--primary);
+    transform: none;
+    /* Disable transform hover inside menu */
+  }
+
+}
