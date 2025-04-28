@@ -2988,4 +2988,6 @@ textarea:focus {
     margin-left: 0;
     /* Reset margin */
   }
- }
+  .nav-links ul li:last-of-type .theme-toggle-btn {
+    border-bottom: none;
+  } }
