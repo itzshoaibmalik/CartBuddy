@@ -2965,4 +2965,11 @@ textarea:focus {
   .nav-links ul li:last-of-type a {
     /* Target link inside last li */
     border-bottom: none;
+  }
+  .nav-links ul li a:hover,
+  .nav-links ul li a:focus {
+    /* Add focus style */
+    background-color: rgba(108, 99, 255, 0.1);
+    color: var(--primary);
+    outline: none;
   } }
