@@ -14,6 +14,13 @@ We combine the power of flexibility with premium service to deliver a seamless s
 
 ---
 
+## Screenshots
+![image](pic1.png)
+![image](pic2.png)
+![image](pic3.png)
+![image](pic4.png)
+
+
 ## ✨ Features
 
 - 🔄 **Flexible Options**: Buy or rent tech based on your needs and budget.
