@@ -19,7 +19,7 @@ We combine the power of flexibility with premium service to deliver a seamless s
 **Homepage**
 
 ![image](pic2.png)
-**Login Page**
+**Sign Up Page**
 
 ![image](pic3.png)
 **Products Page**
