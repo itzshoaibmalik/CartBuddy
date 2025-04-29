@@ -15,17 +15,17 @@ We combine the power of flexibility with premium service to deliver a seamless s
 ---
 
 ## Screenshots
-![image](pic1.png)
 **Homepage**
+![image](pic1.png)
 
-![image](pic2.png)
 **Sign Up Page**
+![image](pic2.png)
 
-![image](pic3.png)
 **Products Page**
+![image](pic3.png)
 
-![image](pic4.png)
 **Cart Page**
+![image](pic4.png)
 
 
 ## ✨ Features
@@ -53,10 +53,10 @@ We combine the power of flexibility with premium service to deliver a seamless s
    git clone https://github.com/yourusername/cartbuddy.git
 
 ## 👥 Collaborators
-Shoaib Malik (Team Lead)
-Shivani Modi
-Srishti
-Shlok
+- Shoaib Malik (Team Lead)
+- Shivani Modi
+- Srishti
+- Shlok
 
 
 ## 🙏 Acknowledgements
