@@ -16,9 +16,13 @@ We combine the power of flexibility with premium service to deliver a seamless s
 
 ## Screenshots
 ![image](pic1.png)
+**Homepage**
 ![image](pic2.png)
+**Login Page**
 ![image](pic3.png)
+**Products Page**
 ![image](pic4.png)
+**Cart Page**
 
 
 ## ✨ Features
