@@ -36,6 +36,8 @@ We combine the power of flexibility with premium service to deliver a seamless s
 - 📦 **Renting Facility**: Affordable rental options for the latest technology.
 - 📱 **Mobile-Responsive Interface**: Shop from anywhere on any device—designed to look great and work fast.
 - 🔐 **Secure Checkout**: Ensuring customer data and payment are handled with care.
+- 🪄 **Version Control**: Git & GitHub
+
 ---
 
 ## 🛠️ Tech Stack
@@ -49,3 +51,13 @@ We combine the power of flexibility with premium service to deliver a seamless s
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/cartbuddy.git
+
+## 👥 Collaborators
+Shoaib Malik (Team Lead)
+Shivani Modi
+Srishti
+Shlok
+
+
+## 🙏 Acknowledgements
+Thanks to our faculty and peers for continuous support and Source Code Management guidance.
