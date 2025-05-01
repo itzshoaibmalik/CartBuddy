@@ -223,7 +223,7 @@
              }
              .auth-form button,
              .btn-social {
-                 padding: 0.8rem; /* Slightly reduce button padding */
+                 padding: 0.8rem; 
                  font-size: 0.9rem;
              }
               .auth-form input {
