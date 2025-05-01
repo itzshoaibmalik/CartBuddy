@@ -213,7 +213,6 @@
            display: none; /* Hidden by default */
         }
 
-        /* Responsive Adjustments */
         @media (max-width: 576px) {
             .auth-container {
                  padding: 25px 20px; /* Reduce padding on small screens */
