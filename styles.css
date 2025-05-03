@@ -2515,7 +2515,6 @@ nav .logo img {
 .section-header.centered h2::after {
   left: 50%;
   transform: translateX(-50%);
-  /* Center underline */
 }
 
 .section-header.centered .btn {
