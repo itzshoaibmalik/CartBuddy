@@ -355,7 +355,6 @@ function updateCartCount() {
  }
 
 
-// --- Deals Slider Animation (Keep existing logic if present) ---
 const dealsContainer = document.querySelector('.deals');
 if (dealsContainer) {
     // Basic animation restart logic if needed (or just rely on CSS animation)
