@@ -174,7 +174,6 @@ function removeFromCart(cartItemId) {
     loadCartItems(); // Reload cart display
 }
 
-// Update item quantity in cart
 function updateCartQuantity(cartItemId, change) {
     let cart = getCart();
     const itemIndex = cart.findIndex(item => item.cartId === cartItemId);
