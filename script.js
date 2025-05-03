@@ -230,7 +230,6 @@ function loadCartItems() {
             cartItemsList.insertAdjacentHTML('beforeend', itemHTML);
         });
 
-        // Calculate totals
         const shippingCost = cart.length > 0 ? 5.00 : 0; // Example fixed shipping
         const total = subtotal + shippingCost;
 
@@ -289,7 +288,6 @@ function loadCheckoutSummary() {
          checkoutOrderItemsEl.insertAdjacentHTML('beforeend', itemHTML);
      });
 
-     // Calculate totals (same logic as cart page for consistency)
     const shippingCost = 5.00; // Assume fixed shipping
      const total = subtotal + shippingCost;
 
