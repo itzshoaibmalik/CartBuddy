@@ -23,7 +23,6 @@ body {
   line-height: 1.6;
 }
 
-/* Modern Header */
 header {
   background: var(--card-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
