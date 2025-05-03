@@ -166,7 +166,7 @@ function addToCart(productId, type) { // type: 'buy' or 'rent'
     updateCartCount(); // Update cart count in header (optional)
 }
 
-// Remove item from cart
+
 function removeFromCart(cartItemId) {
     let cart = getCart();
     cart = cart.filter(item => item.cartId !== cartItemId);
