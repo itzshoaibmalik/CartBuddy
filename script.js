@@ -297,7 +297,6 @@ function loadCheckoutSummary() {
  }
 
 
-// --- Login/Logout Status ---
 function updateLoginStatus() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (loginLogoutLink) {
