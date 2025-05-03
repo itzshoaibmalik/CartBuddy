@@ -180,7 +180,6 @@ function updateCartQuantity(cartItemId, change) {
     if (itemIndex > -1) {
         cart[itemIndex].quantity += change;
         if (cart[itemIndex].quantity <= 0) {
-            // If quantity reaches 0 or less, remove the item
             cart.splice(itemIndex, 1);
         }
         saveCart(cart);
