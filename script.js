@@ -337,10 +337,6 @@ function updateCartCount() {
    }
 }
 
-// Make sure loadFeaturedProducts targets the correct grid on index.html
-// Removed duplicate declaration of productsGrid
-
-// ... rest of your script.js ...
 
 
 
