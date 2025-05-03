@@ -125,7 +125,6 @@ function updateFilterButtons(activeFilter) {
  }
 
 
-// --- Cart Functionality ---
 
 function getCart() {
     return JSON.parse(localStorage.getItem('cartBuddyCart')) || [];
