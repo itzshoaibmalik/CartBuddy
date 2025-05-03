@@ -189,7 +189,6 @@ function updateCartQuantity(cartItemId, change) {
 }
 
 
-// Load and display cart items on cart.html
 function loadCartItems() {
     if (!cartItemsList || !cartSummaryDiv) return; // Only run on cart page
 
