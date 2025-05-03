@@ -162,7 +162,6 @@ function addToCart(productId, type) { // type: 'buy' or 'rent'
 
     saveCart(cart);
     alert(`${product.name} (${type === 'buy' ? 'Purchase' : 'Rental'}) added to cart!`);
-    // Optionally update a mini-cart icon/count here
     updateCartCount(); // Update cart count in header (optional)
 }
 
