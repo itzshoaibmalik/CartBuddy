@@ -2525,7 +2525,6 @@ nav .logo img {
 .product-card .product-image {
   /* Existing styles */
   background-color: #eee;
-  /* Add a light background while image loads */
 }
 
 /* Update Testimonials for consistency */
