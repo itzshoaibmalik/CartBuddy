@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CartBuddy</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your main styles -->
+    <link rel="icon" type="image/png" href="/logo.png">    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<style>
+
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.auth-container {
+    position: relative;
+    background-color: rgba(var(--card-bg-rgb, 255, 255, 255), 0.95); /* Use RGB variable for opacity */
+    padding: 30px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    z-index: 10;
+    text-align: center;
+    border: 1px solid var(--border-color); /* Use theme border */
+    overflow: hidden;
+}
+:root {
+    --card-bg-rgb: 255, 255, 255;
+}
+body[data-theme='dark'] {
+    --card-bg-rgb: 30, 30, 30;
+}
+
+
+.auth-logo { margin-bottom: 20px; }
+.auth-logo img { max-height: 50px; width: auto; filter: var(--logo-filter); /* Apply theme filter */}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.auth-form h2 {
+    color: var(--secondary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Form Group for Input + Label + Error */
+.form-group {
+    margin-bottom: 15px; /* Space between input groups */
+    text-align: left; /* Align label and error left */
+    position: relative; /* For potential absolute positioning */
+}
+
+.form-group label.sr-only { /* Style for visually hidden labels */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.form-group input { /* Styles from login apply here too */
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--input-border);
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text);
+    transition: border-color 0.3s;
+    width: 100%;
+}
+.form-group input:focus {
+     border-color: var(--input-focus-border);
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(var(--primary-rgb, 108, 99, 255), 0.2); /* Use primary color with opacity */
+}
+/* Define --primary-rgb */
+:root { /* ... other variables */ --primary-rgb: 108, 99, 255; }
+body[data-theme='dark'] { /* ... other variables */ --primary-rgb: 143, 138, 255; } /* Corresponding lighter color RGB */
+
+.error-message {
+    color: var(--accent);
+    font-size: 0.8rem; /* Make error slightly smaller */
+    padding-top: 4px; /* Space between input and error */
+    display: none; /* Hidden by default */
+     /* position: absolute; optional - position below input */
+     /* bottom: -18px; */
+     /* left: 0; */
+     min-height: 1.2em; /* Reserve space even when hidden to prevent layout shifts */
+}
+
+
+.auth-form button[type="submit"] { /* Be more specific if needed */
+    padding: 1rem;
+    border: none;
+    background: var(--gradient);
+    color: var(--button-text);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px; /* Adjust space before button */
+    width: 100%;
+}
+.auth-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(var(--primary-rgb, 108, 99, 255), 0.3);
+}
+
+.auth-links { /* Style consistent with login */
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--secondary); /* Use secondary color */
+    line-height: 1.5;
+    width: 100%;
+}
+.auth-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+.auth-links a:hover { text-decoration: underline; }
+.auth-links div { margin-bottom: 0.5rem; }
+
+
+/* === Responsive adjustments for auth pages === */
+@media (max-width: 576px) {
+    .auth-container {
+         padding: 25px 20px;
+         max-width: 95%; /* Allow slightly wider on small screens */
+     }
+     .auth-form h2 { font-size: 1.6rem; margin-bottom: 20px; }
+     .auth-form button, .btn-social { padding: 0.9rem; font-size: 0.95rem; }
+     .form-group input { padding: 0.9rem; font-size: 0.95rem; }
+     .error-message { font-size: 0.75rem; }
+     .auth-links { margin-top: 20px; font-size: 0.85rem; }
+}
+
+/* In styles.css */
+footer {
+  background: var(--secondary); /* Was: var(--secondary) or hardcoded? Change to this */
+  color: var(--text-on-secondary, rgba(255, 255, 255, 0.9)); /* Use a specific variable or fallback */
+  padding: 4rem 2rem;
+  margin-top: 4rem;
+}
+/* Define --text-on-secondary for both themes */
+:root {
+    /* ... */
+    --text-on-secondary: rgba(255, 255, 255, 0.9);
+}
+body[data-theme='dark'] {
+    /* Footer needs light text on dark bg, so --secondary provides bg, --text provides text */
+    /* Or use a darker variable */
+     --footer-bg: #1a1a1a; /* Example darker background */
+     /* Let's try making footer use --card-bg and standard --text for simplicity in dark mode */
+     background: var(--card-bg); /* OR --footer-bg */
+     color: var(--text); /* Use standard text color */
+     /* Redefine text-on-secondary for dark mode footer */
+     --text-on-secondary: var(--text);
+     /* Add a top border */
+     border-top: 1px solid var(--border-color);
+
+}
+
+
+.footer-section h3 {
+  color: var(--text-on-secondary); /* Text color should adapt based on footer bg */
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+   /* Override for dark mode if footer color changes */
+   body[data-theme='dark'] & { color: var(--text); } /* Match main text if footer uses --card-bg */
+}
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 0.8rem; }
+.footer-section ul li a {
+  color: rgba(var(--text-on-secondary-rgb, 255, 255, 255), 0.8); /* Link color should also adapt */
+  text-decoration: none;
+  transition: color 0.3s;
+    /* Override for dark mode if footer color changes */
+   body[data-theme='dark'] & { color: var(--text-muted); } /* Use muted text in dark */
+
+}
+.footer-section ul li a:hover {
+   color: rgb(var(--text-on-secondary-rgb, 255, 255, 255));
+   /* Override for dark mode if footer color changes */
+    body[data-theme='dark'] & { color: var(--primary); } /* Primary color hover */
+}
+/* Define --text-on-secondary-rgb */
+:root { /* ... */ --text-on-secondary-rgb: 255, 255, 255; }
+ /* For dark mode, text-on-secondary IS var(--text), which doesn't have an RGB var yet. Add one if needed */
+ /* Or simplify: use var(--text-muted) directly */
+
+
+ .testimonials {
+  background: var(--card-bg); /* Use card background */
+  padding: 4rem 2rem;
+  margin: 4rem 0; /* Or adjust if using border-top on footer */
+}
+.testimonial-card {
+  background: var(--background); /* Use main background */
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+   border: 1px solid var(--border-color); /* Add border */
+}
+body[data-theme='dark'] .testimonial-card {
+     background: #252525; /* Slightly different dark card background */
+}
+.testimonial-text {
+   color: var(--text);
+}
+.testimonial-author {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.how-it-works {
+   padding: 4rem 2rem;
+   background-color: var(--background); /* Use theme background */
+}
+/* Check .how-it-works-step elements for text/colors */
+ .how-it-works-step h3 { color: var(--secondary); }
+ .how-it-works-step p { color: var(--text-muted); }
+
+/* Category Section was likely okay, but double check */
+.category-section {
+     padding: 4rem 2rem;
+     /* No background color set, inherits body bg - check text colors */
+}
+/* Headings should already use var() if done consistently */
+.category-card h3 { color: white; /* Okay on dark overlay */ }
+
+  </style>
+
+<body class="auth-page"> <!-- Optional class for scoping -->
+
+    <div class="auth-wrapper">
+        <video autoplay muted loop class="background-video">
+             <source src="login.mp4" type="video/mp4"> <!-- Same or different video -->
+            Your browser does not support the video tag.
+        </video>
+
+        <div class="auth-container">
+             <!-- Logo -->
+             <div class="auth-logo">
+                 <a href="index.html">
+                     <img src="logo.png" alt="CartBuddy Logo"> <!-- Use your logo file -->
+                 </a>
+            </div>
+
+            <form class="auth-form" id="signupForm">
+                <h2>Login</h2>
+
+                <!-- Input Group: Name -->
+                <div class="form-group">
+                    <label for="name" class="sr-only">Name</label> <!-- Use labels for accessibility -->
+                    <input type="text" id="name" name="name" placeholder="Enter your Name" required>
+                    <div id="nameError" class="error-message">Name is required.</div>
+                </div>
+
+                <!-- Input Group: Email -->
+                <div class="form-group">
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+                    <div id="emailError" class="error-message">Please enter a valid email.</div>
+                </div>
+
+                <!-- Input Group: Password -->
+                <div class="form-group">
+                     <label for="password" class="sr-only">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Type Password (min. 6 chars)" required>
+                     <div id="passwordError" class="error-message">Password must be at least 6 characters.</div>
+                </div>
+
+                 <!-- Input Group: Confirm Password -->
+                <div class="form-group">
+                    <label for="confirmPassword" class="sr-only">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                     <div id="confirmPasswordError" class="error-message">Passwords do not match.</div>
+                 </div>
+
+                <button type="submit">Login</button>
+            </form>
+
+             <!-- Link to Login -->
+             <div class="auth-links">
+                 <div>Got no account. Create a new one? <a href="login.html">Signup Here</a></div>
+            </div>
+        </div> <!-- End auth-container -->
+    </div> <!-- End auth-wrapper -->
+
+    <!-- Existing Validation Script (ensure it's placed correctly) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => { // Wrap in DOMContentLoaded
+
+            const signupForm = document.getElementById('signupForm');
+
+            if (signupForm) { // Check if the form exists on the page
+                signupForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                     let isValid = true;
+
+                    // Get input elements
+                     const nameInput = document.getElementById('name');
+                     const emailInput = document.getElementById('email');
+                     const passwordInput = document.getElementById('password');
+                     const confirmPasswordInput = document.getElementById('confirmPassword');
+
+                     // Get error message elements
+                     const nameError = document.getElementById('nameError');
+                     const emailError = document.getElementById('emailError');
+                     const passwordError = document.getElementById('passwordError');
+                     const confirmPasswordError = document.getElementById('confirmPasswordError');
+
+                     // Helper to show/hide errors
+                     const showError = (errorElement, message) => {
+                        errorElement.textContent = message;
+                         errorElement.style.display = 'block';
+                         isValid = false; // Set validation flag
+                     };
+                     const hideError = (errorElement) => {
+                         errorElement.style.display = 'none';
+                     };
+
+                     // Reset errors
+                     hideError(nameError);
+                     hideError(emailError);
+                     hideError(passwordError);
+                     hideError(confirmPasswordError);
+
+                     // --- Validation Logic ---
+                     // Validate Name
+                     if (nameInput.value.trim() === '') {
+                         showError(nameError, 'Name is required.');
+                     }
+
+                     // Validate Email
+                     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                     if (!emailPattern.test(emailInput.value)) {
+                         showError(emailError, 'Please enter a valid email address.');
+                     }
+
+                     // Validate Password Length
+                     if (passwordInput.value.length < 6) {
+                         showError(passwordError, 'Password must be at least 6 characters.');
+                     }
+
+                    // Validate Confirm Password Match (only if password length is okay)
+                    if (passwordInput.value.length >= 6 && passwordInput.value !== confirmPasswordInput.value) {
+                         showError(confirmPasswordError, 'Passwords do not match.');
+                    } else if (confirmPasswordInput.value === '' && passwordInput.value.length >= 6) {
+                         // Also check if confirm password field is empty when password is valid
+                         showError(confirmPasswordError, 'Please confirm your password.');
+                    }
+
+                    // --- Submission ---
+                     if (isValid) {
+                         alert('Sign up successful! Please log in. (Redirecting...)');
+                         console.log('Signup Data:', { name: nameInput.value, email: emailInput.value });
+                        // In a real app, send data to server here
+                         window.location.href = 'login.html'; // Redirect to login page
+                    }
+                 }); // End addEventListener
+             } // End if (signupForm)
+         }); // End DOMContentLoaded
+    </script>
+</body>
+</html>

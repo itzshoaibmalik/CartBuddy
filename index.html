@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CartBuddy - Premium Tech Store & Rentals</title> <!-- Updated Title -->
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/logo.png">    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Optional: Add Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
@@ -17,27 +20,20 @@
     <!-- or if it's .ico -->
     <link rel="icon" href="favicon.ico">
     <style>
-        /* Add specific styles for index page enhancements here or move to styles.css */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            /* Align text and image */
             padding: 6rem 4rem;
-            /* Increased padding */
             text-align: left;
-            /* Align text left */
             background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
-            /* Gradient overlay + image */
             background-size: cover;
             min-height: 60vh;
-            /* Ensure hero takes significant height */
         }
 
         .hero-content {
             max-width: 600px;
             z-index: 1;
-            /* Ensure text is above background elements */
         }
 
         .hero h1 {
@@ -51,7 +47,6 @@
             /* Slightly larger */
             margin: 1.5rem 0;
             max-width: 100%;
-            /* Reset max-width from centered version */
             opacity: 0.95;
         }
 
@@ -63,16 +58,13 @@
 
         .hero-image {
             max-width: 500px;
-            /* Adjust as needed */
             display: none;
-            /* Hide on small screens */
         }
 
         .hero-image img {
             width: 100%;
             height: auto;
             border-radius: 10px;
-            /* Optional: Add subtle animation */
             animation: float 6s ease-in-out infinite;
         }
 
@@ -90,7 +82,6 @@
             }
         }
 
-        /* Responsive Hero */
         @media (min-width: 992px) {
             .hero-image {
                 display: block;
@@ -116,11 +107,9 @@
         }
 
 
-        /* Why Choose Us Section */
         .why-choose-us {
             padding: 4rem 2rem;
             background-color: var(--background);
-            /* Light background */
         }
 
         .features-grid {
@@ -129,7 +118,6 @@
             gap: 2.5rem;
             max-width: 1200px;
             margin: 2rem auto 0;
-            /* Add margin top */
         }
 
         .feature-item {
@@ -191,7 +179,6 @@
             border-radius: 12px;
             overflow: hidden;
             aspect-ratio: 1 / 1;
-            /* Make cards square */
             transition: transform 0.3s ease;
         }
 
@@ -204,13 +191,11 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(0.7);
-            /* Darken image slightly */
             transition: filter 0.3s ease;
         }
 
         .category-card:hover img {
             filter: brightness(0.9);
-            /* Lighten image on hover */
         }
 
         .category-card-content {
@@ -220,7 +205,6 @@
             right: 0;
             padding: 1.5rem 1rem;
             background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-            /* Gradient overlay */
             text-align: center;
         }
 
@@ -290,28 +274,23 @@
             color: #555;
         }
 
-        /* Section Header Centering */
         .section-header.centered {
             text-align: center;
             justify-content: center;
-            /* Center items if flex */
         }
 
         .section-header.centered .btn {
             display: none;
         }
 
-        /* Hide 'View All' if header is centered */
     </style>
 </head>
 
 <body>
     <header>
         <nav>
-            <!-- Updated Logo -->
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="CartBuddy Logo" style="width: 100px; height: 60px;">
-                <!-- Adjust height as needed -->
             </a>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -319,6 +298,7 @@
                 <li><a href="products.html?type=rental">Rent</a></li>
                 <li><a href="cart.html" id="cartLink">Cart</a></li> <!-- Added id for cart count -->
                 <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                <li><a href="signup.html">Signup</a></li>
             </ul>
         </nav>
     </header>
@@ -327,9 +307,8 @@
         <nav>
             <!-- Logo -->
             <a href="index.html" class="logo">
-                <!-- If text logo: CartBuddy🛒 -->
                 <!-- If image logo: -->
-                <img src="logo.png" alt="CartBuddy Logo" style="height: 40px;">
+                <img src="logo.png" alt="CartBuddy Logo" style="height: 60px;">
             </a>
 
             <!-- Hamburger Button (Mobile Only) -->
@@ -345,11 +324,12 @@
                     <li><a href="products.html?type=rental">Rent</a></li>
                     <li><a href="cart.html" id="cartLink">Cart</a></li>
                     <li><a href="login.html" id="loginLogoutLink">Login</a></li>
+                    <li><a href="signup.html">Signup</a></li>
                     <!-- Dark Mode Toggle Button -->
                     <li>
                         <button class="theme-toggle-btn" id="theme-toggle" aria-label="toggle theme">
                             <i class="fas fa-moon"></i> <!-- Moon icon -->
-                            <i class="fas fa-sun"></i>  <!-- Sun icon -->
+                            <i class="fas fa-sun"></i> <!-- Sun icon -->
                         </button>
                     </li>
                 </ul>
@@ -583,6 +563,8 @@
                         </a>
                     </li>
                 </ul>
+
+              
                 </ul>
             </div>
         </div>

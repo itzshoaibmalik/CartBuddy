@@ -7,7 +7,6 @@
   --text: #2A2A2A;
   --card-bg: #FFFFFF;
   --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
-  /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
 
 }
 
@@ -24,7 +23,6 @@ body {
   line-height: 1.6;
 }
 
-/* Modern Header */
 header {
   background: var(--card-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
@@ -1564,11 +1562,9 @@ nav .logo img {
 /* ========================================= */
 /*           1. THEME VARIABLES            */
 /* ========================================= */
-=======
 
 
-main
-:root {
+main:root {
   /* Light Mode (Default) */
   --primary: #6C63FF;
   --secondary: #2A2A2A;
@@ -1645,7 +1641,7 @@ header {
   /* Use variable */
   position: fixed;
   /* Keep using fixed if you were */
-=======
+
   --card-bg: #FFFFFF;
   --gradient: linear-gradient(135deg, #6C63FF 0%, #FF6B6B 100%);
   /* --gradient: linear-gradient(to right, #8b2d9e, #a889b6, #c084fc); */
@@ -1691,7 +1687,7 @@ nav .logo img {
   width: auto;
   filter: var(--logo-filter);
   /* Apply filter for dark mode */
-=======
+
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -1834,10 +1830,6 @@ body[data-theme='dark'] .theme-toggle-btn .fa-moon {
   display: none;
 }
 
-=======
-  transition: color 0.3s;
-  position: relative;
-}
 
 nav ul li a::after {
   content: '';
@@ -2523,7 +2515,6 @@ nav .logo img {
 .section-header.centered h2::after {
   left: 50%;
   transform: translateX(-50%);
-  /* Center underline */
 }
 
 .section-header.centered .btn {
@@ -2531,14 +2522,10 @@ nav .logo img {
 }
 
 
-/* Ensure product cards have correct images */
 .product-card .product-image {
-  /* Existing styles */
   background-color: #eee;
-  /* Add a light background while image loads */
 }
 
-/* Update Testimonials for consistency */
 .testimonials {
   padding: 5rem 2rem;
 }
@@ -2547,7 +2534,6 @@ nav .logo img {
 
 
 
-/* Add specific styles for index page enhancements here or move to styles.css */
 .hero {
   display: flex;
   align-items: center;
@@ -2953,8 +2939,7 @@ textarea:focus {
     padding: 0;
     margin: 0;
     width: 100%;
-  }
-
+  } 
   .nav-links ul li {
     width: 100%;
     text-align: center;
@@ -2969,12 +2954,10 @@ textarea:focus {
     color: var(--text);
     border-bottom: 1px solid var(--border-color);
   }
-
   .nav-links ul li:last-of-type a {
     /* Target link inside last li */
     border-bottom: none;
   }
-
   .nav-links ul li a:hover,
   .nav-links ul li a:focus {
     /* Add focus style */
@@ -2997,11 +2980,9 @@ textarea:focus {
     margin-left: 0;
     /* Reset margin */
   }
-
   .nav-links ul li:last-of-type .theme-toggle-btn {
     border-bottom: none;
   }
-
   .nav-links ul li .theme-toggle-btn:hover {
     background-color: rgba(108, 99, 255, 0.1);
     /* Hover effect */
@@ -3009,10 +2990,7 @@ textarea:focus {
     transform: none;
     /* Disable transform hover inside menu */
   }
-
-  }
-
-/* Smaller Devices (Adjustments if needed) */
+  /* Smaller Devices (Adjustments if needed) */
 @media (max-width: 767.98px) {
   nav {
     padding: 0.8rem 1rem;
@@ -3020,4 +2998,6 @@ textarea:focus {
 
   /* Reduce nav padding */
   /* Adjust other element sizes as needed */
+}
+
 }

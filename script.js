@@ -12,8 +12,6 @@ const summaryShippingEl = document.getElementById('summaryShipping');
 const summaryTotalEl = document.getElementById('summaryTotal');
 const loginLogoutLink = document.getElementById('loginLogoutLink'); // Get nav link
 
-// --- Sample Product Data ---
-// In a real application, this would come from an API
 const allProducts = [
     { id: 1, name: 'AeroBook Pro 15"', price: 1499.99, rentPrice: 79.99, image: 'https://images.unsplash.com/photo-1695639509828-d4260075e370?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'laptop', buy: true, rent: true, specs: { ram: '16GB', storage: '512GB SSD', cpu: 'Core i7' } },
     { id: 2, name: 'Pixel Phone X', price: 899.00, rentPrice: 49.99, image: 'https://images.unsplash.com/photo-1730818029305-5c53a66f9c6f?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', type: 'phone', buy: true, rent: true, specs: { screen: '6.4 inch OLED', camera: '50MP', battery: '4500mAh' } },
@@ -27,7 +25,6 @@ const allProducts = [
 
 // --- Product Loading ---
 
-// Function to create a product card HTML
 function createProductCardHTML(product) {
     const priceHTML = product.buy ? `<span class="product-price">$${product.price.toFixed(2)}</span>` : '';
     const rentPriceHTML = product.rent ? `<span class="product-rent-price">Rent: $${product.rentPrice.toFixed(2)}/mo</span>` : ''; // Example monthly
@@ -35,7 +32,6 @@ function createProductCardHTML(product) {
     const buyButtonHTML = product.buy ? `<button class="btn btn-add-cart" onclick="addToCart(${product.id}, 'buy')">Add to Cart</button>` : '';
     const rentButtonHTML = product.rent ? `<button class="btn btn-rent-now" onclick="addToCart(${product.id}, 'rent')">Rent Now</button>` : '';
 
-    // Basic Specs display
     let specsListHTML = '<ul class="specs-list">';
     if (product.specs) {
         for (const [key, value] of Object.entries(product.specs)) {
@@ -77,12 +73,10 @@ function loadFeaturedProducts() {
     }
 }
 
-// Load all products on products.html, with optional filtering
 function loadAllProducts(filterType = null) { // filterType: null, 'buy', 'rental'
     if (allProductsGrid) {
         let productsToDisplay = allProducts;
 
-        // Apply filter based on the button clicked or URL param
         if (filterType === 'buy') {
             productsToDisplay = allProducts.filter(p => p.buy);
             document.getElementById('productsPageTitle').textContent = "Shop Our Tech";
@@ -107,7 +101,6 @@ function loadAllProducts(filterType = null) { // filterType: null, 'buy', 'renta
     }
 }
 
-// Add event listeners to filter buttons on products page
 function setupProductFilters() {
     const filterAllBtn = document.getElementById('filterAllBtn');
     const filterBuyBtn = document.getElementById('filterBuyBtn');
@@ -118,7 +111,6 @@ function setupProductFilters() {
     filterRentBtn?.addEventListener('click', () => loadAllProducts('rental'));
 }
 
-// Update active state of filter buttons
 function updateFilterButtons(activeFilter) {
      const buttons = document.querySelectorAll('.filter-controls button');
      buttons.forEach(btn => btn.classList.remove('active'));
@@ -133,14 +125,11 @@ function updateFilterButtons(activeFilter) {
  }
 
 
-// --- Cart Functionality ---
 
-// Get cart from localStorage or initialize an empty one
 function getCart() {
     return JSON.parse(localStorage.getItem('cartBuddyCart')) || [];
 }
 
-// Save cart to localStorage
 function saveCart(cart) {
     localStorage.setItem('cartBuddyCart', JSON.stringify(cart));
 }
@@ -151,7 +140,6 @@ function addToCart(productId, type) { // type: 'buy' or 'rent'
     if (!product) return;
 
     let cart = getCart();
-    // Create a unique ID for cart items based on product ID and type
     const cartItemId = `${productId}-${type}`;
 
     const existingItemIndex = cart.findIndex(item => item.cartId === cartItemId);
@@ -174,11 +162,10 @@ function addToCart(productId, type) { // type: 'buy' or 'rent'
 
     saveCart(cart);
     alert(`${product.name} (${type === 'buy' ? 'Purchase' : 'Rental'}) added to cart!`);
-    // Optionally update a mini-cart icon/count here
     updateCartCount(); // Update cart count in header (optional)
 }
 
-// Remove item from cart
+
 function removeFromCart(cartItemId) {
     let cart = getCart();
     cart = cart.filter(item => item.cartId !== cartItemId);
@@ -186,7 +173,6 @@ function removeFromCart(cartItemId) {
     loadCartItems(); // Reload cart display
 }
 
-// Update item quantity in cart
 function updateCartQuantity(cartItemId, change) {
     let cart = getCart();
     const itemIndex = cart.findIndex(item => item.cartId === cartItemId);
@@ -194,7 +180,6 @@ function updateCartQuantity(cartItemId, change) {
     if (itemIndex > -1) {
         cart[itemIndex].quantity += change;
         if (cart[itemIndex].quantity <= 0) {
-            // If quantity reaches 0 or less, remove the item
             cart.splice(itemIndex, 1);
         }
         saveCart(cart);
@@ -203,7 +188,6 @@ function updateCartQuantity(cartItemId, change) {
 }
 
 
-// Load and display cart items on cart.html
 function loadCartItems() {
     if (!cartItemsList || !cartSummaryDiv) return; // Only run on cart page
 
@@ -246,7 +230,6 @@ function loadCartItems() {
             cartItemsList.insertAdjacentHTML('beforeend', itemHTML);
         });
 
-        // Calculate totals
         const shippingCost = cart.length > 0 ? 5.00 : 0; // Example fixed shipping
         const total = subtotal + shippingCost;
 
@@ -305,7 +288,6 @@ function loadCheckoutSummary() {
          checkoutOrderItemsEl.insertAdjacentHTML('beforeend', itemHTML);
      });
 
-     // Calculate totals (same logic as cart page for consistency)
     const shippingCost = 5.00; // Assume fixed shipping
      const total = subtotal + shippingCost;
 
@@ -315,7 +297,6 @@ function loadCheckoutSummary() {
  }
 
 
-// --- Login/Logout Status ---
 function updateLoginStatus() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (loginLogoutLink) {
@@ -356,10 +337,6 @@ function updateCartCount() {
    }
 }
 
-// Make sure loadFeaturedProducts targets the correct grid on index.html
-// Removed duplicate declaration of productsGrid
-
-// ... rest of your script.js ...
 
 
 
@@ -374,7 +351,6 @@ function updateCartCount() {
  }
 
 
-// --- Deals Slider Animation (Keep existing logic if present) ---
 const dealsContainer = document.querySelector('.deals');
 if (dealsContainer) {
     // Basic animation restart logic if needed (or just rely on CSS animation)
