@@ -8,6 +8,7 @@
             box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
+
         *, *:before, *:after {
             box-sizing: inherit; /* Apply box-sizing to all elements */
         }
