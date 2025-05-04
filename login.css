@@ -13,6 +13,7 @@
             box-sizing: inherit; /* Apply box-sizing to all elements */
         }
 
+
         .auth-wrapper {
             display: flex;
             justify-content: center;
