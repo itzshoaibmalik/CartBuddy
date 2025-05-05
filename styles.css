@@ -2540,14 +2540,11 @@ nav .logo img {
   justify-content: space-between;
   /* Align text and image */
   padding: 6rem 4rem;
-  /* Increased padding */
   text-align: left;
   /* Align text left */
   background: linear-gradient(135deg, rgba(108, 99, 255, 0.9) 0%, rgba(255, 107, 107, 0.85) 100%), url('hero-background.jpg') no-repeat center center;
-  /* Gradient overlay + image */
   background-size: cover;
   min-height: 60vh;
-  /* Ensure hero takes significant height */
 }
 
 .hero-content {
