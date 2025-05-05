@@ -2548,7 +2548,6 @@ nav .logo img {
 .hero-content {
   max-width: 600px;
   z-index: 1;
-  /* Ensure text is above background elements */
 }
 
 .hero h1 {
