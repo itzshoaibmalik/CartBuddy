@@ -339,7 +339,6 @@ function updateCartCount() {
 
 
 
-
 // --- Cart Count Indicator (Optional) ---
 function updateCartCount() {
      const cart = getCart();
@@ -349,7 +348,6 @@ function updateCartCount() {
          cartLink.textContent = `Cart ${count > 0 ? `(${count})` : ''}`;
      }
  }
-
 
 const dealsContainer = document.querySelector('.deals');
 if (dealsContainer) {
